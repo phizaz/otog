@@ -11,7 +11,7 @@ function isAlpha(input)
 }
 function isSpace(input)
 {
-	return input == ' ' || input == '	' || input == '>' || input == '{' || input == '}' || input == ';' || input == '\n' || input == '.' || input == '#' || input =='<' || input == '(' || input == ')';
+	return input == ' ' || input == '	' || input == '>' || input == '{' || input == '}' || input == ';' || input == '\n' || input == '.' || input == '#' || input =='<' || input == '(' || input == ')' || input == '=';
 }
 function color(input)
 {
@@ -21,7 +21,7 @@ function color(input)
 	var len = code.length;
 	var aft_sharp = ["include","define"];
 	var var_type = ["struct","void","int","long","short","unsigned","float","double","bool","char","class"];
-	var stt = ["if","else","for","while","do","const","case","switch","return","public","private","operator"];
+	var stt = ["if","else","for","while","do","const","case","switch","return","public","private","operator","and","or","not","xor"];
 	var bln = ["true","false"];
 	var sp_word = [aft_sharp];
 	sp_word.push(var_type);
