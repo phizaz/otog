@@ -1,0 +1,59 @@
+.code
+{
+	color: #ffffff;
+	background-color: #272822;
+	font-size: 15px;
+}
+.code.aft_sharp
+{
+	color: #f92772;
+
+} /*#include #define*/
+
+.code.lib
+{
+	color: #e6db74;
+} /*<stdio.h>*/
+
+.code.def
+{
+	color: #a6e22a;
+} /*max(_x,_y) (_x>_y)?(_x:_y)*/
+
+.code.number
+{
+	color: #ae81ff;
+} /*10,200*/
+
+.code.var_type
+{
+	color: #66d9ef;
+	font-style: italic;
+} /*struct void int long short unsigned float double bool char class*/
+
+.code.comment{
+	color: #75715a;
+} /*//*/
+
+.code.def_func
+{
+	color: #a6e22a;
+} /*int max()*/
+
+.code.call_func
+{
+	color: #66d9ef;
+} /*x = max()*/
+
+.code.str
+{
+	color: #e6db74;
+} /*'can' "pam"*/
+.code.per_str
+{
+	color: #ae81ff;
+} /*"can = %d"*/
+.code.stt
+{
+	color: #f92772;
+} /*if else for while do const case switch*/

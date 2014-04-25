@@ -1,0 +1,2 @@
+upload/23-otog6.cpp: In function 'int main()':
+upload/23-otog6.cpp:14:42: warning: ignoring return value of 'int scanf(const char*, ...)', declared with attribute warn_unused_result
