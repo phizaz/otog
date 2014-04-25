@@ -142,13 +142,13 @@ function color(input)
 			{
 				word = "<span class='code comment'>";
 				j = i;
-				while(code[j]!='\n')
+				while(code[j+1]!='\n')
 				{
 					word+=code[j];
 					j++;
 				}
 				i = j;
-				word+="\n</span>";
+				word+=code[j]+"</span>";
 				chk=1;
 			}
 			if(code[i]=='/'&&code[i+1]=='*')
