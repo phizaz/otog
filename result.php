@@ -87,9 +87,10 @@ if(!inTime()){
 				$user = user($user_id);
 				$task = task($task_id);
 				echo '
-				<div class="row" style="text-align: center;" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')">
+				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time). '
@@ -123,9 +124,10 @@ if(!inTime()){
 				$user = user($user_id);
 				$task = task($task_id);
 				echo '
-				<div class="row" style="text-align: center;" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')">
+				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
@@ -159,9 +161,10 @@ if(!inTime()){
 				$user = user($user_id);
 				$task = task($task_id);
 				echo '
-				<div class="row" style="text-align: center;" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')">
+				<div class="row" style="text-align: center;">
 					<div class="cell">
 						' . $result_id . '
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
