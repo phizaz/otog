@@ -1,10 +1,16 @@
+<?php
+session_start();
+include ('../config.php');
+include ('config.php');
+include ('library.php');
+if (!isLogin()) {
+	include ('../notlogin.php');
+	die();
+}
+?>
 <script type="text/javascript" src="/addon/jquery-1.10.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/addon/code_color.css">
-<div id='jquery'></div>
 <script type="text/javascript">
-$(document).ready(function(){
-	// $("#jquery").load("code_color.htm");
-});
 function isAlpha(input)
 {
 	return ('A' <= input && input <= 'Z') || ('a' <= input && input <= 'z') || (input == '_');
@@ -262,40 +268,47 @@ function color(input)
 
 <div id="msg"></div>
 <h2>โค้ด</h2>
-<pre id="_code">
+<pre id="_code" style="height:500px;overflow:auto;" class='code'>
 <?php
-$filename_c = "../judge/upload/".$_GET["task"]."-".$_GET["user"].".c";
-if(file_exists($filename_c))
-	$chk_c = 1;
-$filename_cpp = "../judge/upload/".$_GET["task"]."-".$_GET["user"].".cpp";
-if(file_exists($filename_cpp))
-	$chk_cpp = 1;
-if($chk_c == 1 && $chk_cpp == 1)
+if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 {
-	if(filemtime($filename_cpp) > filemtime($filename_c))
-		$isfile = $filename_cpp;
-	else
-		$isfile = $filename_c;
-}
-else
-{
-	$isfile = $filename_cpp;
-	if($chk_c)
-		$isfile = $filename_c;
-}
-$file = fopen($isfile, "r");
-// $file = fopen("../judge/upload/1-kku1.cpp", "r");
-while(!feof($file)){
-	$line = fgets($file);
-	for($i = 0; $i < strlen($line); $i++)
+	$filename_c = "../judge/upload/".$_GET["task"]."-".$_GET["user"].".c";
+	if(file_exists($filename_c))
+		$chk_c = 1;
+	$filename_cpp = "../judge/upload/".$_GET["task"]."-".$_GET["user"].".cpp";
+	if(file_exists($filename_cpp))
+		$chk_cpp = 1;
+	if($chk_c == 1 && $chk_cpp == 1)
 	{
-		if($line[$i]=='<')
-			echo "&lt";
+		if(filemtime($filename_cpp) > filemtime($filename_c))
+			$isfile = $filename_cpp;
 		else
-			echo $line[$i];
+			$isfile = $filename_c;
 	}
+	else
+	{
+		if($chk_cpp)
+			$isfile = $filename_cpp;
+		else if($chk_c)
+			$isfile = $filename_c;
+		else
+			die();
+	}
+	$file = fopen($isfile, "r");
+	while(!feof($file)){
+		$line = fgets($file);
+		for($i = 0; $i < strlen($line); $i++)
+		{
+			if($line[$i]=='<')
+				echo "&lt";
+			else if($line[$i]=='	')
+				echo "&nbsp;&nbsp;&nbsp; ";
+			else
+				echo $line[$i];
+		}
+	}
+	fclose($file);
 }
-fclose($file);
 ?>
 </pre>
 <script type="text/javascript">

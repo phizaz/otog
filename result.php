@@ -18,9 +18,6 @@ if(!inTime()){
 	function code_watch(task,user){
 		$('#code_watch').load("/addon/code_watcher.php?task="+task+"&user="+user);
 		$(window).scrollTop($('#code_watch').offset().top);
-		// $('#code_watch').load("/addon/code_watcher.php?file="+task+"-"+user+".cpp");
-		// msg = $('#code').text();
-		// $('#code').html(msg);
 	}
 </script>
 <div style="height: 20px;"></div>
@@ -50,7 +47,7 @@ if(!inTime()){
 	}
 	</style>
 	<div id="code_watch" style="text-align:left"></div>
-	<div class="grid_12">
+	<div class="grid_12" id="result_list">
 		<div class="table">
 			<div class="row" style="text-align: center; font-weight: bold;">
 				<div class="cell" style="width: 50px;">
