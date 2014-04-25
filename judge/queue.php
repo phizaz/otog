@@ -65,6 +65,7 @@ function write(){
 }
 function error($code){
 	GLOBAL $message, $text, $score, $timeused;
+	echo $code . '\n';
 	$text = 'err';
 	$message = $code . '<br>เกรดเดอร์จะหยุดทำงานดังนั้นไป start grader ด้วย';
 	$score = 0;
