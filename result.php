@@ -15,6 +15,13 @@ if(!inTime()){
 	function compiler_message(id){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
+	function code_watch(task,user){
+		$('#code_watch').load("/addon/code_watcher.php?task="+task+"&user="+user);
+		$(window).scrollTop($('#code_watch').offset().top);
+		// $('#code_watch').load("/addon/code_watcher.php?file="+task+"-"+user+".cpp");
+		// msg = $('#code').text();
+		// $('#code').html(msg);
+	}
 </script>
 <div style="height: 20px;"></div>
 <div id="result" class="container_12">	
@@ -42,6 +49,7 @@ if(!inTime()){
 		text-align: left;
 	}
 	</style>
+	<div id="code_watch" style="text-align:left"></div>
 	<div class="grid_12">
 		<div class="table">
 			<div class="row" style="text-align: center; font-weight: bold;">
@@ -82,7 +90,7 @@ if(!inTime()){
 				$user = user($user_id);
 				$task = task($task_id);
 				echo '
-				<div class="row" style="text-align: center;">
+				<div class="row" style="text-align: center;" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')">
 					<div class="cell">
 						-
 					</div>
@@ -118,7 +126,7 @@ if(!inTime()){
 				$user = user($user_id);
 				$task = task($task_id);
 				echo '
-				<div class="row" style="text-align: center;">
+				<div class="row" style="text-align: center;" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')">
 					<div class="cell">
 						-
 					</div>
@@ -154,7 +162,7 @@ if(!inTime()){
 				$user = user($user_id);
 				$task = task($task_id);
 				echo '
-				<div class="row" style="text-align: center;">
+				<div class="row" style="text-align: center;" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')">
 					<div class="cell">
 						' . $result_id . '
 					</div>

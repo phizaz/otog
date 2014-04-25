@@ -1,5 +1,5 @@
-<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="code_color.css">
+<script type="text/javascript" src="/addon/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/addon/code_color.css">
 <div id='jquery'></div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -261,9 +261,30 @@ function color(input)
 </script>
 
 <div id="msg"></div>
-<pre id="code">
+<h2>โค้ด</h2>
+<pre id="_code">
 <?php
-$file = fopen("../judge/upload/".$_GET["file"], "r");
+$filename_c = "../judge/upload/".$_GET["task"]."-".$_GET["user"].".c";
+if(file_exists($filename_c))
+	$chk_c = 1;
+$filename_cpp = "../judge/upload/".$_GET["task"]."-".$_GET["user"].".cpp";
+if(file_exists($filename_cpp))
+	$chk_cpp = 1;
+if($chk_c == 1 && $chk_cpp == 1)
+{
+	if(filemtime($filename_cpp) > filemtime($filename_c))
+		$isfile = $filename_cpp;
+	else
+		$isfile = $filename_c;
+}
+else
+{
+	$isfile = $filename_cpp;
+	if($chk_c)
+		$isfile = $filename_c;
+}
+$file = fopen($isfile, "r");
+// $file = fopen("../judge/upload/1-kku1.cpp", "r");
 while(!feof($file)){
 	$line = fgets($file);
 	for($i = 0; $i < strlen($line); $i++)
@@ -278,5 +299,5 @@ fclose($file);
 ?>
 </pre>
 <script type="text/javascript">
-color("code");
+color("_code");
 </script>
