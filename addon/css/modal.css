@@ -11,7 +11,6 @@ This plugin use with jQuery
 function showModal(id) //id of modal-container
 {
 	$('#'+id).fadeIn('fast');
-	$('.modal-bg').fadeIn();
 	$("body").css("overflow", "hidden");
 }
 
@@ -19,7 +18,6 @@ function showModal(id) //id of modal-container
 function closeModal(id) //id of modal-container
 {
 	$('#'+id).fadeOut('fast');
-	$('.modal-bg').fadeOut();
 	$("body").css("overflow", "auto");
 }
 
@@ -44,14 +42,9 @@ $(document).ready(function(){
 	bottom: 0px;
 	z-index: 1000;
 	display: none;
+	background: rgba(0,0,0,0.75);
 	/*background-image: url('/addon/img/modal-bg.png');*/
 	cursor: pointer;
-}
-/* modal background */
-.modal-bg {
-	display: none;
-	background-color: black;
-	opacity: 0.75;
 }
 /* main modal */
 .modal {
