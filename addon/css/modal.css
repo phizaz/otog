@@ -57,7 +57,7 @@ $(document).ready(function(){
 /* content of modal */
 .modal-content {
 	border-radius: 10px;
-	background-color: rgb(200,200,200);
+	background-color: #272822;
 	margin-left: 20%;
 	margin-right: 20%;
 	height: 100%;
@@ -67,8 +67,8 @@ $(document).ready(function(){
 /* area of close modal icon */
 .modal-close {
 	text-align: right;
-	margin-top: 50px;
-	margin-right: 5px;
+	padding-top: 5px;
+	padding-right: 5px;
 }
 /* close modal icon */
 .modal-close-icon {
