@@ -64,7 +64,7 @@ $page = '#main';
 		<?php
 		if($_SESSION[$config['name_short']]['level']==0)
 		{
-			echo "<hr><a href='admin' target='_blank'>หน้าผู้ดูแล</a>";
+			echo "<br><a href='admin' target='_blank'>หน้าผู้ดูแล</a>";
 		}
 		?>
 		</h4>
