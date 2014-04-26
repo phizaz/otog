@@ -56,7 +56,6 @@ $(document).ready(function(){
 }
 /* content of modal */
 .modal-content {
-	font-weight: bold;
 	border-radius: 10px;
 	background: #272822;
 	margin-left: 20%;
