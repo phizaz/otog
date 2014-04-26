@@ -52,12 +52,12 @@ $(document).ready(function(){
 	position: absolute;
 	top: 15%;
 	width: 100%;
-	opacity: 10;
 }
 /* content of modal */
 .modal-content {
 	border-radius: 10px;
 	background: #272822;
+	margin-top: 10px;
 	margin-left: 20%;
 	margin-right: 20%;
 	height: 100%;
@@ -69,7 +69,6 @@ $(document).ready(function(){
 	text-align: right;
 	padding-top: 5px;
 	padding-right: 5px;
-	padding-bottom: -15px;
 }
 /* close modal icon */
 .modal-close-icon {
