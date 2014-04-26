@@ -10,8 +10,11 @@ if(!inTime()){
 	die();
 }
 ?>
-<link rel="stylesheet" type="text/css" href="addon/css/modal.css">
+<link rel="stylesheet" type="text/css" href="/addon/css/modal.css">
 <script type="text/javascript">
+	$(document).ready(function(){
+		$('#main/result').hide();
+	});
 	function compiler_message(id){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
@@ -67,7 +70,7 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<div id="main/result" class="semantic-content" style="text-align:left;"></div>
+	<center><div id="main/result" class="semantic-content" style="text-align:left;"></div></center>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
 			<?php 
