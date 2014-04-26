@@ -34,6 +34,7 @@ if(!inTime()){
 		$('#'+id).fadeOut();
 		$('.modal-bg').fadeOut();
 		$("body").css("overflow", "auto");
+		unload();
 	}
 	$(document).ready(function(){
 		$('html').click(function(e) {   
