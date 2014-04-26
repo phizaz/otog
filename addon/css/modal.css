@@ -44,7 +44,7 @@ $(document).ready(function(){
 	display: none;
 	background-color: black;
 	/*background-color: rgba(0,0,0,0.75);*/
-	/*opacity: 0.85;*/
+	opacity: 0.75;
 	cursor: pointer;
 }
 /* main modal */
@@ -58,7 +58,7 @@ $(document).ready(function(){
 /* content of modal */
 .modal-content {
 	border-radius: 10px;
-	background-color: #272822;
+	background: #272822;
 	margin-left: 20%;
 	margin-right: 20%;
 	height: 100%;
