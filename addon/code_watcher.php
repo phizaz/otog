@@ -267,7 +267,7 @@ function color(input)
 </script>
 <div class="modal"><div class="modal-content">
 <div class='modal-close'><a href="javascript:closeModal('code_watcher')"><img class='modal-close-icon' src="/addon/img/close-icon.png"></a></div>
-<pre id="_code" style="height:80%;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
+<pre id="_code" style="height:85%;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
 <?php
 if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 {

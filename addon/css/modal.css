@@ -43,7 +43,7 @@ $(document).ready(function(){
 	z-index: 1000;
 	display: none;
 	background-color: black;
-	opacity: 0.85;
+	/*opacity: 0.85;*/
 	cursor: pointer;
 }
 /* main modal */
@@ -69,8 +69,8 @@ $(document).ready(function(){
 /* area of close modal icon */
 .modal-close {
 	text-align: right;
-	margin-top: 5px;
-	margin-right: 5px;
+	margin-top: 15px;
+	margin-right: 15px;
 }
 /* close modal icon */
 .modal-close-icon {
