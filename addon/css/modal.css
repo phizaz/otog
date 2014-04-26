@@ -57,7 +57,6 @@ $(document).ready(function(){
 .modal-content {
 	border-radius: 10px;
 	background: #272822;
-	margin-top: 10px;
 	margin-left: 20%;
 	margin-right: 20%;
 	height: 100%;
