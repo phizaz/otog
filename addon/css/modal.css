@@ -42,8 +42,7 @@ $(document).ready(function(){
 	bottom: 0px;
 	z-index: 1000;
 	display: none;
-	/*background: black;*/
-	background-image: url('/addon/img/modal-bg.png');
+	/*background-image: url('/addon/img/modal-bg.png');*/
 	cursor: pointer;
 }
 /* main modal */
