@@ -25,8 +25,8 @@ $page = '#main';
 			hash[1] = 'task';
 			updateHash();
 		}
-		if(hash[1]!="result#code_watcher")
-			goPage(hash[1]);
+		goPage(hash[1]);
+		$("$chk").load(hash[1]);
 	}
 
 	//WHEN LINK
@@ -59,6 +59,7 @@ $page = '#main';
 		padding: 10px;
 	}
 </style>
+<div id="chk"></div>
 <div id="nav" class="container_12" align="center">
 	<div class="grid_2">
 		<h4>สวัสดี <?=$_SESSION[$config['name_short']]['display'] ?>
