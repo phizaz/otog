@@ -18,7 +18,7 @@ if(!inTime()){
 	function code_watch(task,user){
 		showModal('code_watcher');
 		load();
-		$('#code_watcher').clear();
+		$('#code_watcher').text('');
 		$('#code_watcher').load("addon/code_watcher.php?task="+task+"&user="+user,function(){
 			unload();
 		});
