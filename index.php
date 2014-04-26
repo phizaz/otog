@@ -14,11 +14,35 @@ include('config.php');
 
 	var hash;
 	getHash();
-	function load(){
-		$('#loader-wrapper').delay(500).queue(function() {$(this).fadeIn().dequeue();}); 
+	var load_interval = null;
+	function load() {
+		clearInterval(load_interval);
+		load_interval = null;
+
+		var progress_bar = $('#progress-bar');
+		progress_bar.show();
+
+		var expect_load_time = 5;
+		var update_frequency = 350;
+		var freeze_percent = 80;
+
+		var width = 0;
+		var cnt = 0;
+		load_interval = setInterval(function () {
+			cnt++;
+			width = cnt / (expect_load_time * 1000 / update_frequency) * 100;
+			progress_bar.css('width', width + '%');
+			if(width > freeze_percent) {
+				console.log(width, freeze_percent);
+				clearInterval(load_interval);
+			}
+		}, update_frequency);
 	}
-	function unload(){
-		$('#loader-wrapper').clearQueue().fadeOut();
+	function unload() {
+		var progress_bar = $('#progress-bar');
+		clearInterval(load_interval);
+		load_interval = null;
+		progress_bar.css('width', '100%').delay(350).fadeOut(150);
 	}
 	function getHash(){
 		hash = location.hash.toLowerCase();
@@ -99,108 +123,57 @@ include('config.php');
 	}
 	islogin();
 	</script>
-	<style>
-	body {
-		font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
-		font-size: 14px;
-		color: rgb(30,30,30);
-	}
-	input[type='text'], input[type="password"] {
-		/*font-size: 14px;*/
-		text-align: center;
-		width: 250px;
-		/*height: 25px;*/
-	}
-	a{
-		color: rgb(255,145,0);
-		text-decoration: none;
-	}
-	</style>
+	<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-	<div id="loader-wrapper">
-		<style>
-			#loader-wrapper {
-				position: fixed;
-				top: 0px;
-				left: 0px;
-				right: 0px;
-				bottom: 0px;
-				display: none;
-				z-index: 1000;
-			}
-			#loader {
-				position: absolute;
-				top: 50%;
-				text-align: center;
-				margin-top: -30px;
-				width: 100%;
-			}
-		</style>
-		<div id="loader" align="center">
-			<div style="overflow: hidden; width: 100px; height: 60px; border-radius: 15px; margin: auto;">
-				<img src="loading.gif" style="width: 250px; margin: -95px 0px 0px -75px;">
-			</div>
+	<div id="progress-bar-wrapper">
+		<div id="progress-bar">
+			
 		</div>
 	</div>
 	<div id="body" align="center">
 		<? if(!isLogin()): ?>
-		<style>
-		#body {
-			display: table-cell;
-			vertical-align: middle;
-		}
-		#login-wrapper {
-			width: 400px;  
-			/*background: rgb(240,240,240);*/
-		}
-		#login-wrapper .inner{
-			height: 300px;
-			display: table-cell;
-			vertical-align: middle;
-		}
-		</style>
 		<link href="admin/bootstrap.min.css" rel="stylesheet">
 		<? if($config['regist_open']): ?>
 		<div id="reg" style="display: none;"></div>
-		<? endif; ?>
-		<div id="login-wrapper" align="center">
-			<div class="panel panel-warning">
-				<div class="panel-heading">
-					<div class="panel-title">
-						<?=$config['name']?>
-					</div>
-				</div>
-				<div class="panel-body">
-					<p id="error" style="display: none;" class='well'></p>
-					<form method="post" onsubmit="return login(this);">
-						<p>
-							<input id="user" class='form-control' name="user" type="text" placeholder="ยูสเซอร์">
-						</p>
-						<p>
-							<input id="pass" class='form-control' name="pass" type="password" placeholder="รหัสผ่าน">
-						</p>
-						<p>
-							<? if($config['regist_open']): ?>
-							<div class='btn-group pull-right'>
-								<input type="button" onclick="loadReg()" class='btn btn-warning' value='สมัครใหม่'>
-								<input type="submit" class='btn btn-warning' value="ลงชื่อเข้าใช้">
-							</div>
-							<? else: ?>
-							<input type="submit" class='btn btn-warning pull-right' value="ลงชื่อเข้าใช้">
-							<? endif; ?>
-						</p>
-					</form>
+	<? endif; ?>
+	<div id="login-wrapper" align="center">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<div class="panel-title">
+					<?=$config['name']?>
 				</div>
 			</div>
-		</div>
-		<script type="text/javascript">
-		$(window).resize(function(){
-			$('#body').height($(window).height()).width($(window).width());
-		});
-		$(window).resize();
-		</script>
-		<? endif; ?>
+			<div class="panel-body">
+				<p id="error" style="display: none;" class='well'></p>
+				<form method="post" onsubmit="return login(this);">
+					<p>
+						<input id="user" class='form-control' name="user" type="text" placeholder="ยูสเซอร์">
+					</p>
+					<p>
+						<input id="pass" class='form-control' name="pass" type="password" placeholder="รหัสผ่าน">
+					</p>
+					<p>
+						<? if($config['regist_open']): ?>
+						<div class='btn-group pull-right'>
+							<input type="button" onclick="loadReg()" class='btn btn-warning' value='สมัครใหม่'>
+							<input type="submit" class='btn btn-warning' value="ลงชื่อเข้าใช้">
+						</div>
+					<? else: ?>
+					<input type="submit" class='btn btn-warning pull-right' value="ลงชื่อเข้าใช้">
+				<? endif; ?>
+			</p>
+		</form>
 	</div>
+</div>
+</div>
+<script type="text/javascript">
+$(window).resize(function(){
+	$('#body').height($(window).height()).width($(window).width());
+});
+$(window).resize();
+</script>
+<? endif; ?>
+</div>
 </body>
 </html>
