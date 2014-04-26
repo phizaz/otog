@@ -16,7 +16,8 @@ if(!inTime()){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
 	function code_watch(task,user){
-		$('#code_watcher').load("/addon/code_watcher.php?task="+task+"&user="+user);
+		$('#main/result').load("/addon/code_watcher.php?task="+task+"&user="+user);
+		$('#main/result').css("style","block");
 		// $(window).scrollTop($('#code_watch').offset().top);
 	}
 </script>
@@ -66,7 +67,7 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<div id="code_watcher" style="text-align:left"></div>
+	<div id="main/result" class="semantic-content" style="text-align:left;display:none;"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
 			<?php 
