@@ -45,9 +45,84 @@ if(!inTime()){
 		display: none;
 		text-align: left;
 	}
+	.fast-uploader {
+		float: right;
+	}
+	.fast-uploader h4 {
+		float: left;
+		width: 300px;
+		text-align: right;
+		margin: 0px 15px 0px 0px;
+	}
+	.fast-uploader small {
+		font-weight: normal;
+	}
+	.fast-uploader div {
+		width: 150px;
+		float: left;
+	}
+	.fast-uploader iframe {
+		width: 150px;
+		height: 50px;
+	}
 	</style>
 	<div id="code_watch" style="text-align:left"></div>
 	<div class="grid_12" id="result_list">
+		<div class="fast-uploader">
+			<?php 
+			$my = $_SESSION[$config['name_short']];
+			$latest_task = null;
+
+			//Search in Queue
+			$query = 'select `task_id` from `queue` where `user_id` = ' . $my['user_id'] . ' order by `queue_id` desc limit 1';
+			$sql -> prepare($query);
+			$sql -> execute();
+			$sql -> bind_result($task_id);
+			while ($sql -> fetch() ) {
+				$latest_task = $task_id;
+			}
+
+			if($latest_task == null) {
+				//Search in Grading
+				$query = 'select `task_id` from `grading` where `user_id` = ' . $my['user_id'] . ' order by `grading_id` desc limit 1';
+				$sql -> prepare($query);
+				$sql -> execute();
+				$sql -> bind_result($task_id);
+				while ($sql -> fetch() ) {
+					$latest_task = $task_id;
+				}
+			}
+
+			if($latest_task == null) {
+				//Search in Result
+				$query = 'select `task_id` from `result` where `user_id` = ' . $my['user_id'] . ' order by `result_id` desc limit 1';
+				$sql -> prepare($query);
+				$sql -> execute();
+				$sql -> bind_result($task_id);
+				while ($sql -> fetch() ) {
+					$latest_task = $task_id;
+				}
+			}
+
+			if($latest_task != null) {
+				$query = 'select `name`, `name_short` from `task` where `task_id` = ' . $latest_task;
+				$sql -> prepare($query);
+				$sql -> execute();
+				$sql -> bind_result($task_name, $task_name_short);
+
+				$latest_task_name = null;
+				$latest_task_name_short = null;
+				while($sql -> fetch()) {
+					$latest_task_name = $task_name;
+					$latest_task_name_short = $task_name_short;
+				}
+			}
+			 ?>
+			<?php if($latest_task != null): ?>
+				<h4>ส่งข้อล่าสุด <?=$latest_task_name?> <small>(<?=$latest_task_name_short?>)</small></h4>
+				<div><iframe src="upload.php?id=<?=$latest_task?>&fast=true" frameborder="0"></iframe></div>
+			<?php endif; ?>
+		</div>
 		<div class="table">
 			<div class="row" style="text-align: center; font-weight: bold;">
 				<div class="cell" style="width: 50px;">

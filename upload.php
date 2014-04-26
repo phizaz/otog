@@ -9,6 +9,7 @@ if(!inTime()){
 	die('การแข่งขันจบแล้ว');
 }
 $task_id = $_GET['id'];
+$fast = $_GET['fast'];
 ob_start();
 ?>
 
@@ -58,10 +59,15 @@ if($_GET['step'] == 2){
 
 			//GO TO RESULT
 			
-			echo '<script type="text/javascript">
-				window.parent.hash[1] = "result";
-				window.parent.updateHash();
-			</script>';
+			if($fast) 
+				echo '<script type="text/javascript">
+					window.parent.location.reload(false);
+				</script>';
+			else 
+				echo '<script type="text/javascript">
+					window.parent.hash[1] = "result";
+					window.parent.updateHash();
+				</script>';
 		}
 		else {
 			header('location: upload.php?id='.$task_id.'&err=wrong-extension');
@@ -74,7 +80,7 @@ else {
 	<script type="text/javascript">alert("อัพแต่ c, cpp เท่านั้นดิ");</script>
 	<? } ?>
 	<div style="display: table-cell; height: 50px; vertical-align: middle;">
-	<form method="post" action="?id=<?=$task_id?>&step=2" enctype="multipart/form-data">
+	<form method="post" action="?id=<?=$task_id?>&step=2&fast=<?=$fast?>" enctype="multipart/form-data">
 		<input class="grey" type="file" name="file" id="file" style="width: 120px;">
 		<div style="height: 2px;"></div>
 		<input type="submit" name="submit" style="width: 50px;" value="ตรวจ">
