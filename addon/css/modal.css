@@ -52,7 +52,7 @@ $(document).ready(function(){
 	position: absolute;
 	top: 15%;
 	width: 100%;
-	opacity: 1;
+	opacity: 10;
 }
 /* content of modal */
 .modal-content {
@@ -64,6 +64,7 @@ $(document).ready(function(){
 	height: 100%;
 	text-align: left;
 	cursor: auto;
+	opacity: 10;
 }
 /* area of close modal icon */
 .modal-close {
