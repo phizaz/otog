@@ -21,7 +21,7 @@ $page = '#main';
 
 	function engine() {
 		getHash();
-		// $("#test_test").load(hash[1]);
+		alert(hash[1]);
 		if (hash[1] == null || hash[1] == '') {
 			hash[1] = 'task';
 			updateHash();
