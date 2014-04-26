@@ -43,8 +43,7 @@ $(document).ready(function(){
 	z-index: 1000;
 	display: none;
 	/*background: black;*/
-	background: hsla(0,0,0,0.75);
-	opacity: 0.75;
+	background-image: url('/addon/img/modal-bg.png');
 	cursor: pointer;
 }
 /* main modal */
