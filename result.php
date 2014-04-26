@@ -248,7 +248,7 @@ if(!inTime()){
 						' . $user['display'] . ' '. ($my['level'] == 0 ? '('.$user['user'].')' : ''). '
 					</div>
 					<div class="cell">
-						<a href="doc/'. $task['name_short'] .'.pdf" target="_blank">' . $task['name'] . '</a>
+						<a href="doc.php?id='. $task['task_id'] . '" target="_blank">' . $task['name'] . '</a>
 					</div>
 					<div class="cell">
 						';

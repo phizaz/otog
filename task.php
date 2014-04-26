@@ -126,7 +126,10 @@ if(!inTime()){
 			}
 			
 			while($sql->fetch() ){
-				$link = 'doc/' . $name_short . '.pdf';
+				// Old-fashion obsoleted.
+				// $link = 'doc/' . $name_short . '.pdf';
+				// New fashion.
+				$link = 'doc.php?id=' . $task_id;
 				$latest = latest($task_id, $my['user_id']);
 				
 				$query = 'select `user_id` from `like` where `task_id` = ?;';
