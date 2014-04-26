@@ -42,8 +42,7 @@ $(document).ready(function(){
 	bottom: 0px;
 	z-index: 1000;
 	display: none;
-	background-color: black;
-	/*opacity: 0.85;*/
+	background-color: rgba(0,0,0,0.85);
 	cursor: pointer;
 }
 /* main modal */
