@@ -1,9 +1,9 @@
 <?
 session_start();
-include('../config.php');
+include('config.php');
 
 if(!isLogin() ){
-	include('../notlogin');
+	include('notlogin');
 	die();
 }
 
