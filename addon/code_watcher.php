@@ -17,7 +17,7 @@ function isAlpha(input)
 }
 function isSpace(input)
 {
-	return input == ' ' || input == '	' || input == '>' || input == '{' || input == '}' || input == ';' || input == '\n' || input == '.' || input == '#' || input =='<' || input == '(' || input == ')' || input == '=';
+	return input == ' ' || input == '	' || input == '>' || input == '{' || input == '}' || input == ';' || input == '\n' || input == '.' || input == '#' || input =='<' || input == '(' || input == ')' || input == '=' || input == ',';
 }
 function color(input)
 {
@@ -53,7 +53,7 @@ function color(input)
 			bkt[1]++;
 		if(code[i]=='}')
 			bkt[1]--;
-		if(chk==0&&isSpace(code[i-1]))
+		if(chk==0&&!isAlpha(code[i-1]))
 		{
 			while(lp < 4 && !chk)
 			{
@@ -61,7 +61,7 @@ function color(input)
 				{
 					if(code.substring(i,sp_word[lp][j].length+i)==sp_word[lp][j])
 					{
-						if(isSpace(code[sp_word[lp][j].length+i]))
+						if(!isAlpha(code[sp_word[lp][j].length+i]))
 						{
 							if(sp_word[lp][j]=="include")mem_inc=1;
 							else if(sp_word[lp][j]=="define")mem_def=1;
