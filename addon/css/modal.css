@@ -52,6 +52,7 @@ $(document).ready(function(){
 	position: absolute;
 	top: 15%;
 	width: 100%;
+	opacity: 1;
 }
 /* content of modal */
 .modal-content {
