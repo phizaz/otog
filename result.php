@@ -86,7 +86,6 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<div class="modal-bg"></div>
 	<div class="modal-container" id="code_watcher"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
@@ -145,7 +144,7 @@ if(!inTime()){
 			<?php endif; ?>
 		</div>
 		<div class="table">
-			<div class="row" style="text-align: center; font-weight: bold;">
+			<div class="row" style="text-align: center;">
 				<div class="cell" style="width: 50px;">
 					#
 				</div>
