@@ -67,8 +67,8 @@ $(document).ready(function(){
 /* area of close modal icon */
 .modal-close {
 	text-align: right;
-	margin-top: 1px;
-	margin-right: 5px;
+	margin-top: 15px;
+	margin-right: 10px;
 }
 /* close modal icon */
 .modal-close-icon {
