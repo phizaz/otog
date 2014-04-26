@@ -31,11 +31,7 @@ $config['time'] = time(0);
 $singlecase = array('P' => 'Accepted', 'T' => 'Time limit exceeded', '-' => 'Wrong answer', 'X' => 'Crashed');
 $month = array('มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม');
 
-function isAdmin(){
-	global $_SESSION, $config;
-	if($_SESSION[$config['name_short']]['level'] == 0) return true;
-	return false;
-}
+
 function inTime(){
 	global $config, $_SESSION;
 	if($config['force_start'] || isAdmin() || $config['mode'] == 'online' || 
@@ -49,6 +45,13 @@ function inTime(){
 function isLogin(){
 	global $_SESSION, $config;
 	if( ( $config['online'] || isAdmin() ) && $_SESSION[$config['name_short']]['login'] == true) return true;
+	return false;
+}
+
+function isAdmin(){
+	global $_SESSION, $config;
+	if(isLogin()) 
+		if($_SESSION[$config['name_short']]['level'] == 0) return true;
 	return false;
 }
 function isBlind(){
