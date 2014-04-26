@@ -59,7 +59,6 @@ $page = '#main';
 		padding: 10px;
 	}
 </style>
-<div id="chk"></div>
 <div id="nav" class="container_12" align="center">
 	<div class="grid_2">
 		<h4>สวัสดี <?=$_SESSION[$config['name_short']]['display'] ?>
@@ -380,6 +379,6 @@ $page = '#main';
 		</div>
 	</div>
 </div>
+<div id="chk"></div>
 <div id="content" style="background: rgb(250,250,250); padding-bottom: 20px;">
-	
 <div>
