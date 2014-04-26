@@ -265,9 +265,9 @@ function color(input)
 	$(id).html(new_code);
 }
 </script>
-
-<header><h2>โค้ด</h2></header>
-<pre id="_code" style="height:500px;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
+<div class="modal"><div class="modal-content">
+<div class='modal-close'><a href="javascript:closeModal('code_watcher')"><img class='modal-close-icon' src="close-icon.png"></a></div>
+<pre id="_code" style="height:90%;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
 <?php
 if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 {
@@ -310,6 +310,7 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 }
 ?>
 </pre>
+</div></div>
 <script type="text/javascript">
 color("_code");
 </script>

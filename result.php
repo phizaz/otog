@@ -10,7 +10,7 @@ if(!inTime()){
 	die();
 }
 ?>
-
+<link rel="stylesheet" type="text/css" href="/addon/css/modal.css">
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#code_watcher').hide();
@@ -20,9 +20,26 @@ if(!inTime()){
 	}
 	function code_watch(task,user){
 		$('#code_watcher').load("/addon/code_watcher.php?task="+task+"&user="+user);
-		$('#code_watcher').show();
-		// $(window).scrollTop($('#code_watch').offset().top);
+		showModal('code_watcher');
 	}
+	function showModal(id)
+	{
+		$('#'+id).fadeIn('fast');
+		$("body").css("overflow", "hidden");
+	}
+	function closeModal(id)
+	{
+		$('#'+id).fadeOut('fast');
+		$("body").css("overflow", "auto");
+	}
+	$(document).ready(function(){
+		$('html').click(function(e) {   
+			if( !$(e.target).hasClass('modal-content'))
+			{
+				closeModal('code_watcher');
+			}
+		});
+	});
 </script>
 <div style="height: 20px;"></div>
 <div id="result" class="container_12">	
@@ -70,7 +87,7 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<center><div id="code_watcher" style="text-align:left;"></div></center>
+	<div class="modal-container" id="code_watcher"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
 			<?php 
