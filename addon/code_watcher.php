@@ -312,7 +312,11 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 ?>
 </pre>
 </div>
-<a href="#main/result" class="modal-close">&times;</a>
+<a href="#main/result" onclick="close_watcher()">&times;</a>
 <script type="text/javascript">
+function close_watcher()
+{
+	$('#main/result').hide();
+}
 color("_code");
 </script>

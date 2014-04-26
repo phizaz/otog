@@ -17,7 +17,7 @@ if(!inTime()){
 	}
 	function code_watch(task,user){
 		$('#main/result').load("/addon/code_watcher.php?task="+task+"&user="+user);
-		$('#main/result').css("style","block");
+		$('#main/result').show();
 		// $(window).scrollTop($('#code_watch').offset().top);
 	}
 </script>
