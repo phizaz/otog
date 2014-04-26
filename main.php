@@ -21,7 +21,7 @@ $page = '#main';
 
 	function engine() {
 		getHash();
-		$("#chk").load(hash[1]);
+		$("#test_test").load(hash[1]);
 		if (hash[1] == null || hash[1] == '') {
 			hash[1] = 'task';
 			updateHash();
@@ -270,7 +270,7 @@ $page = '#main';
 					<textarea id="message_text" name="text" style="width: 100%; height: 48px; border: none; margin: 0px; padding: 0px;"></textarea>
 				</div>
 			</div>
-			<h1 id="chk"></h1>
+			<h1 id="test_test"></h1>
 			<script type="text/javascript">
 				var firstMessage = -1;
 				var currentMessage = -1;
