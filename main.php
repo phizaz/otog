@@ -25,7 +25,8 @@ $page = '#main';
 			hash[1] = 'task';
 			updateHash();
 		}
-		goPage(hash[1]);
+		if(hash[1]!="result#code_watcher")
+			goPage(hash[1]);
 	}
 
 	//WHEN LINK
