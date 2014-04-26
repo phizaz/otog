@@ -1,6 +1,6 @@
 <?php
 
-include('mysql.php');
+include('../mysql.php');
 
 define('HOST',$mysql['host']);
 define('USER',$mysql['user']);
