@@ -42,7 +42,7 @@ $(document).ready(function(){
 	bottom: 0px;
 	z-index: 1000;
 	display: none;
-	background: rgba(0,0,0,0.75);
+	background: rgba(0,0,0,0.6);
 	/*background-image: url('/addon/img/modal-bg.png');*/
 	cursor: pointer;
 }
@@ -56,6 +56,7 @@ $(document).ready(function(){
 }
 /* content of modal */
 .modal-content {
+	font-weight: bold;
 	border-radius: 10px;
 	background: #272822;
 	margin-left: 20%;
