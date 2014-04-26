@@ -266,7 +266,7 @@ function color(input)
 }
 </script>
 
-<div class="modal-inner">
+<!-- <div class="modal-inner"> -->
 <header><h2>โค้ด</h2></header>
 <pre id="_code" style="height:500px;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
 <?php
@@ -311,7 +311,7 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 }
 ?>
 </pre>
-</div>
+<!-- </div> -->
 <a href="#main/result" onclick="close_watcher()">&times;</a>
 <script type="text/javascript">
 function close_watcher()
