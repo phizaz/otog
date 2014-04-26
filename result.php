@@ -16,8 +16,8 @@ if(!inTime()){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
 	function code_watch(task,user){
-		$('#code_watch').load("/addon/code_watcher.php?task="+task+"&user="+user);
-		$(window).scrollTop($('#code_watch').offset().top);
+		$('#code_watcher').load("/addon/code_watcher.php?task="+task+"&user="+user);
+		// $(window).scrollTop($('#code_watch').offset().top);
 	}
 </script>
 <div style="height: 20px;"></div>
@@ -66,7 +66,7 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<div id="code_watch" style="text-align:left"></div>
+	<div id="main/result#code_watcher" class="semantic-content" style="text-align:left"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
 			<?php 
@@ -165,7 +165,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
+						<a href="#main/result#code_watcher" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time). '
@@ -202,7 +202,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
+						<a href="#main/result#code_watcher" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
@@ -239,7 +239,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						' . $result_id . '
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
+						<a href="#main/result#code_watcher" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '

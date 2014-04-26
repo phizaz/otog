@@ -8,6 +8,7 @@ include('config.php');
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title><?=$config['name']?></title>
 	<link href="960_12_col.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="addon/css/modal.css">
 	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="jquery.ba-hashchange.min.js"></script>
 	<script type="text/javascript">

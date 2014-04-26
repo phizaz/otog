@@ -266,8 +266,8 @@ function color(input)
 }
 </script>
 
-<div id="msg"></div>
-<h2>โค้ด</h2>
+<div class="modal-inner">
+<header><h2>โค้ด</h2></header>
 <pre id="_code" style="height:500px;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
 <?php
 if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
@@ -311,6 +311,8 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 }
 ?>
 </pre>
+</div>
+<a href="#main/result" class="modal-close">&times;</a>
 <script type="text/javascript">
 color("_code");
 </script>
