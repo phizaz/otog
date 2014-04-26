@@ -42,7 +42,9 @@ $(document).ready(function(){
 	bottom: 0px;
 	z-index: 1000;
 	display: none;
-	background-color: rgba(0,0,0,0.5);
+	background-color: black;
+	/*background-color: rgba(0,0,0,0.75);*/
+	/*opacity: 0.85;*/
 	cursor: pointer;
 }
 /* main modal */
