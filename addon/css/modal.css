@@ -43,6 +43,8 @@ $(document).ready(function(){
 	z-index: 1000;
 	display: none;
 	background: rgba(0,0,0,0.6);
+	-khtml-opacity: 0.6;
+	-moz-opacity:.6;
 	/*background-image: url('/addon/img/modal-bg.png');*/
 	cursor: pointer;
 }
