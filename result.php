@@ -12,9 +12,6 @@ if(!inTime()){
 ?>
 <link rel="stylesheet" type="text/css" href="/addon/css/modal.css">
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#code_watcher').hide();
-	});
 	function compiler_message(id){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
@@ -25,11 +22,13 @@ if(!inTime()){
 	function showModal(id)
 	{
 		$('#'+id).fadeIn();
+		$('.modal-bg').fadeIn();
 		$("body").css("overflow", "hidden");
 	}
 	function closeModal(id)
 	{
 		$('#'+id).fadeOut();
+		$('.modal-bg').fadeOut();
 		$("body").css("overflow", "auto");
 	}
 	$(document).ready(function(){
@@ -87,6 +86,7 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
+	<div class="modal-bg"></div>
 	<div class="modal-container" id="code_watcher"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
