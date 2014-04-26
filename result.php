@@ -24,12 +24,12 @@ if(!inTime()){
 	}
 	function showModal(id)
 	{
-		$('#'+id).fadeIn('fast');
+		$('#'+id).show('fast');
 		$("body").css("overflow", "hidden");
 	}
 	function closeModal(id)
 	{
-		$('#'+id).fadeOut('fast');
+		$('#'+id).hide('fast');
 		$("body").css("overflow", "auto");
 	}
 	$(document).ready(function(){
