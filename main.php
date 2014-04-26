@@ -21,12 +21,14 @@ $page = '#main';
 
 	function engine() {
 		getHash();
-		alert(hash[1]);
 		if (hash[1] == null || hash[1] == '') {
 			hash[1] = 'task';
 			updateHash();
 		}
-		goPage(hash[1]);
+		if(hash[1]!='undefined')
+		{
+			goPage(hash[1]);
+		}
 	}
 
 	//WHEN LINK
