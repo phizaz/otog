@@ -34,7 +34,7 @@ if(!inTime()){
 	}
 	$(document).ready(function(){
 		$('html').click(function(e) {   
-			if( !$(e.target).hasClass('modal-content'))
+			if( !$(e.target).hasClass('code'))
 			{
 				closeModal('code_watcher');
 			}

@@ -61,13 +61,16 @@ function color(input)
 				{
 					if(code.substring(i,sp_word[lp][j].length+i)==sp_word[lp][j])
 					{
-						if(sp_word[lp][j]=="include")mem_inc=1;
-						else if(sp_word[lp][j]=="define")mem_def=1;
-						tmp_cls = idx_sp[lp];
-						chk = 1;
-						word = "<span class='code "+tmp_cls+"'>"+sp_word[lp][j]+"</span>";
-						i+=sp_word[lp][j].length-1;
-						break;
+						if(isSpace(code[sp_word[lp][j].length+i]))
+						{
+							if(sp_word[lp][j]=="include")mem_inc=1;
+							else if(sp_word[lp][j]=="define")mem_def=1;
+							tmp_cls = idx_sp[lp];
+							chk = 1;
+							word = "<span class='code "+tmp_cls+"'>"+sp_word[lp][j]+"</span>";
+							i+=sp_word[lp][j].length-1;
+							break;
+						}
 					}
 				}
 				lp++;
@@ -267,7 +270,7 @@ function color(input)
 </script>
 <div class="modal"><div class="modal-content">
 <div class='modal-close'><a href="javascript:closeModal('code_watcher')"><img class='modal-close-icon' src="/addon/img/close-icon.png"></a></div>
-<pre id="_code" style="height:85%;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
+<pre id="_code" style="height:80%;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
 <?php
 if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 {
