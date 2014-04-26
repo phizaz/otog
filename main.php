@@ -25,7 +25,7 @@ $page = '#main';
 			hash[1] = 'task';
 			updateHash();
 		}
-		if(hash[1]!='undefined')
+		if(hash[1]!='code_watcher')
 		{
 			goPage(hash[1]);
 		}
