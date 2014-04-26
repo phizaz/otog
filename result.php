@@ -10,13 +10,13 @@ if(!inTime()){
 	die();
 }
 ?>
-
+<link rel="stylesheet" type="text/css" href="addon/css/modal.css">
 <script type="text/javascript">
 	function compiler_message(id){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
 	function code_watch(task,user){
-		$('#main/result').load("/addon/code_watcher.php?task="+task+"&user="+user);
+		// $('#main/result').load("/addon/code_watcher.php?task="+task+"&user="+user);
 		$('#main/result').show();
 		// $(window).scrollTop($('#code_watch').offset().top);
 	}
@@ -67,7 +67,13 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<div id="main/result" class="semantic-content" style="text-align:left;display:none;"></div>
+	<div id="main/result" class="semantic-content" style="text-align:left;display:block;">
+		่กดเกเ่าหกวเ่หวเ่ดาสกวเ่รพนเวิื่ดฒ<br>
+		่กดเกเ่าหกวเ่หวเ่ดาสกวเ่รพนเวิื่ดฒ<br>
+		่กดเกเ่าหกวเ่หวเ่ดาสกวเ่รพนเวิื่ดฒ<br>
+		่กดเกเ่าหกวเ่หวเ่ดาสกวเ่รพนเวิื่ดฒ<br>
+		่กดเกเ่าหกวเ่หวเ่ดาสกวเ่รพนเวิื่ดฒ<br>
+	</div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
 			<?php 
