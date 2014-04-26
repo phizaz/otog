@@ -48,10 +48,7 @@ include('config.php');
 	}
 	function getHash(){
 		hash = location.hash.toLowerCase();
-		if(hash!='#code_watcher')
-			hash = hash.substring(1).split('/');
-		else
-			hash = 'code_watcher';
+		hash = hash.substring(1).split('/');
 	}
 	function updateHash(degree){
 		var newhash = '#';

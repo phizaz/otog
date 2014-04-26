@@ -25,10 +25,7 @@ $page = '#main';
 			hash[1] = 'task';
 			updateHash();
 		}
-		if(hash[1]!='code_watcher')
-		{
-			goPage(hash[1]);
-		}
+		goPage(hash[1]);
 	}
 
 	//WHEN LINK
@@ -272,7 +269,6 @@ $page = '#main';
 					<textarea id="message_text" name="text" style="width: 100%; height: 48px; border: none; margin: 0px; padding: 0px;"></textarea>
 				</div>
 			</div>
-			<h1 id="test_test"></h1>
 			<script type="text/javascript">
 				var firstMessage = -1;
 				var currentMessage = -1;
@@ -383,4 +379,5 @@ $page = '#main';
 	</div>
 </div>
 <div id="content" style="background: rgb(250,250,250); padding-bottom: 20px;">
+	
 <div>
