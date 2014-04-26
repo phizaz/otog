@@ -8,8 +8,8 @@ if (!isLogin()) {
 	die();
 }
 ?>
-<script type="text/javascript" src="/addon/jquery-1.10.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/addon/code_color.css">
+<script type="text/javascript" src="/addon/js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/addon/css/code_color.css">
 <script type="text/javascript">
 function isAlpha(input)
 {
