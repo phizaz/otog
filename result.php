@@ -186,7 +186,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="#main/result" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
+						<a href="javascipt:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time). '
@@ -223,7 +223,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="#main/result" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
+						<a href="javascipt:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
@@ -260,7 +260,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						' . $result_id . '
-						<a href="#main/result" onclick="code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
+						<a href="javascipt:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
