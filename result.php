@@ -66,7 +66,8 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<div id="#code_watcher" class="semantic-content" style="text-align:left"></div>
+	<!-- class="semantic-content"  -->
+	<div id="#code_watcher" style="text-align:left"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
 			<?php 
