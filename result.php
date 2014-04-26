@@ -10,14 +10,17 @@ if(!inTime()){
 	die();
 }
 ?>
-<link rel="stylesheet" type="text/css" href="/addon/css/modal.css">
+<link rel="stylesheet" type="text/css" href="addon/css/modal.css">
 <script type="text/javascript">
 	function compiler_message(id){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
 	function code_watch(task,user){
 		showModal('code_watcher');
-		$('#code_watcher').load("/addon/code_watcher.php?task="+task+"&user="+user);
+		load()
+		$('#code_watcher').load("addon/code_watcher.php?task="+task+"&user="+user,function(){
+			unload();
+		});
 	}
 	function showModal(id)
 	{
@@ -185,7 +188,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time). '
@@ -222,7 +225,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
@@ -259,7 +262,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						' . $result_id . '
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/img/code_icon.png"></a>
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
