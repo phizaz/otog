@@ -42,15 +42,15 @@ a{
 #progress-bar {
 	height: 100%;
 	width: 0%;
-	background-color: rgb(255,0,109);
-	box-shadow: 0px 0px 5px 0px rgba(255,0,109,0.3);
+	background-color: rgb(255,110,0);
+	box-shadow: 0px 0px 5px 0px rgba(255,110,0,0.3);
 	transition: 0.25s ease;
 	-webkit-transition: 0.25s ease;
 }
 
 #body {
-	display: table-cell;
-	vertical-align: middle;
+	/*display: table-cell;*/
+	/*vertical-align: middle;*/
 }
 #login-wrapper {
 	width: 400px;  

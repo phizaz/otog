@@ -20,6 +20,7 @@ include('config.php');
 		load_interval = null;
 
 		var progress_bar = $('#progress-bar');
+		progress_bar.css('width', '0%');
 		progress_bar.show();
 
 		var expect_load_time = 5;
