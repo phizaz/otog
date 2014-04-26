@@ -19,17 +19,17 @@ if(!inTime()){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
 	function code_watch(task,user){
-		$('#code_watcher').load("/addon/code_watcher.php?task="+task+"&user="+user);
 		showModal('code_watcher');
+		$('#code_watcher').load("/addon/code_watcher.php?task="+task+"&user="+user);
 	}
 	function showModal(id)
 	{
-		$('#'+id).show('fast');
+		$('#'+id).fadeIn('fast');
 		$("body").css("overflow", "hidden");
 	}
 	function closeModal(id)
 	{
-		$('#'+id).hide('fast');
+		$('#'+id).fadeOut('fast');
 		$("body").css("overflow", "auto");
 	}
 	$(document).ready(function(){
