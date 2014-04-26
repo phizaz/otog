@@ -1,7 +1,8 @@
 <?
-session_start();
+// @session_start();
 date_default_timezone_set('Asia/Bangkok');
 include('mysql.php');
+error_reporting(0); // turn off all notice
 function newSqli(){
 	global $mysql;
 	$mysqli = new mysqli($mysql['host'], $mysql['user'], $mysql['pass'], $mysql['database']);

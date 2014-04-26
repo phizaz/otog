@@ -176,7 +176,7 @@ if(!inTime()){
 					<a href="' . $link . '" target="_blank">' . $name . (isAdmin() ? ' ('. $name_short .') ' : '') . '<br>';
 				printf("(%.1lf s., %d MB.)", $time_limit, $mem_limit);
 				echo '</a>
-					<div style="float: right;"><a href="javascript:like('.$task_id.');"><img src="like.png"></a> <span id="like_'.$task_id.'" class="like" liked="'.$liked.'"><div class="names" likecount="'.$like_count.'">'.$like_names.'</div><span class="likecount">'.($like_count == 0 ? 'ไม่มี' : $like_count . ' คน').'</span></span></div>
+					<div style="float: right;"><a href="javascript:like('.$task_id.');"><img src="addon/img/like.png"></a> <span id="like_'.$task_id.'" class="like" liked="'.$liked.'"><div class="names" likecount="'.$like_count.'">'.$like_names.'</div><span class="likecount">'.($like_count == 0 ? 'ไม่มี' : $like_count . ' คน').'</span></span></div>
 				</div>
 				<div id="score_'.$task_id.'" class="cell score">
 				';
@@ -240,7 +240,7 @@ if(!inTime()){
 				if(like_obj.attr('liked') == 0){
 					like_obj.attr('liked',1);
 					$.ajax({
-						url : 'like.php',
+						url : 'addon/like.php',
 						type : 'post',
 						data : 'task_id=' + task_id, 
 						success : function (html){

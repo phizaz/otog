@@ -1,8 +1,16 @@
+@font-face {
+    font-family: "Source Code Pro";
+    src: url(http://otog.org/addon/font/SourceCodePro-Regular.ttf) format("truetype");
+}
+
 .code
 {
 	color: #ffffff;
-	background-color: #272822;
+	background: #272822;
 	font-size: 15px;
+	/*font-family: "Monaco","Consolas";*/
+	/*font-weight: bold;*/
+	font-family: "Source Code Pro";
 }
 .code.aft_sharp
 {

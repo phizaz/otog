@@ -138,7 +138,7 @@ include('config.php');
 		<? if($config['regist_open']): ?>
 		<div id="reg" style="display: none;"></div>
 	<? endif; ?>
-	<div id="login-wrapper" align="center">
+	<div id="login-wrapper">
 		<div class="panel panel-warning">
 			<div class="panel-heading">
 				<div class="panel-title">

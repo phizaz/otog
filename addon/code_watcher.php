@@ -8,8 +8,8 @@ if (!isLogin()) {
 	die();
 }
 ?>
-<script type="text/javascript" src="/addon/jquery-1.10.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/addon/code_color.css">
+<script type="text/javascript" src="/addon/js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/addon/css/code_color.css">
 <script type="text/javascript">
 function isAlpha(input)
 {
@@ -17,7 +17,7 @@ function isAlpha(input)
 }
 function isSpace(input)
 {
-	return input == ' ' || input == '	' || input == '>' || input == '{' || input == '}' || input == ';' || input == '\n' || input == '.' || input == '#' || input =='<' || input == '(' || input == ')' || input == '=';
+	return input == ' ' || input == '	' || input == '>' || input == '{' || input == '}' || input == ';' || input == '\n' || input == '.' || input == '#' || input =='<' || input == '(' || input == ')' || input == '=' || input == ',';
 }
 function color(input)
 {
@@ -53,7 +53,7 @@ function color(input)
 			bkt[1]++;
 		if(code[i]=='}')
 			bkt[1]--;
-		if(chk==0&&isSpace(code[i-1]))
+		if(chk==0&&!isAlpha(code[i-1]))
 		{
 			while(lp < 4 && !chk)
 			{
@@ -61,13 +61,16 @@ function color(input)
 				{
 					if(code.substring(i,sp_word[lp][j].length+i)==sp_word[lp][j])
 					{
-						if(sp_word[lp][j]=="include")mem_inc=1;
-						else if(sp_word[lp][j]=="define")mem_def=1;
-						tmp_cls = idx_sp[lp];
-						chk = 1;
-						word = "<span class='code "+tmp_cls+"'>"+sp_word[lp][j]+"</span>";
-						i+=sp_word[lp][j].length-1;
-						break;
+						if(!isAlpha(code[sp_word[lp][j].length+i]))
+						{
+							if(sp_word[lp][j]=="include")mem_inc=1;
+							else if(sp_word[lp][j]=="define")mem_def=1;
+							tmp_cls = idx_sp[lp];
+							chk = 1;
+							word = "<span class='code "+tmp_cls+"'>"+sp_word[lp][j]+"</span>";
+							i+=sp_word[lp][j].length-1;
+							break;
+						}
 					}
 				}
 				lp++;
@@ -265,11 +268,9 @@ function color(input)
 	$(id).html(new_code);
 }
 </script>
-
-<div id="msg"></div>
-<h2>โค้ด</h2>
-<pre id="_code" style="height:500px;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
-<?php
+<div class="modal"><div class="modal-content">
+<div class='modal-close'><a href="javascript:closeModal('code_watcher')"><img class='modal-close-icon' src="addon/img/close-icon.png"></a></div>
+<pre id="_code" style="height:85%;overflow:auto;padding-left:10px;" class='code'><?php
 if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 {
 	$filename_c = "../judge/upload/".$_GET["task"]."-".$_GET["user"].".c";
@@ -311,6 +312,7 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 }
 ?>
 </pre>
+</div></div>
 <script type="text/javascript">
 color("_code");
 </script>

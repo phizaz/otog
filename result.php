@@ -10,15 +10,40 @@ if(!inTime()){
 	die();
 }
 ?>
-
+<link rel="stylesheet" type="text/css" href="addon/css/modal.css">
 <script type="text/javascript">
 	function compiler_message(id){
 		$('#compiler_message-'+id).slideToggle('fast');
 	}
 	function code_watch(task,user){
-		$('#code_watch').load("/addon/code_watcher.php?task="+task+"&user="+user);
-		$(window).scrollTop($('#code_watch').offset().top);
+		showModal('code_watcher');
+		load();
+		$('#code_watcher').text('');
+		$('#code_watcher').load("addon/code_watcher.php?task="+task+"&user="+user,function(){
+			unload();
+		});
 	}
+	function showModal(id)
+	{
+		$('#'+id).fadeIn();
+		$('.modal-bg').fadeIn();
+		$("body").css("overflow", "hidden");
+	}
+	function closeModal(id)
+	{
+		$('#'+id).fadeOut();
+		$('.modal-bg').fadeOut();
+		$("body").css("overflow", "auto");
+		unload();
+	}
+	$(document).ready(function(){
+		$('html').click(function(e) {   
+			if( !$(e.target).hasClass('code'))
+			{
+				closeModal('code_watcher');
+			}
+		});
+	});
 </script>
 <div style="height: 20px;"></div>
 <div id="result" class="container_12">	
@@ -66,7 +91,7 @@ if(!inTime()){
 		height: 50px;
 	}
 	</style>
-	<div id="code_watch" style="text-align:left"></div>
+	<div class="modal-container" id="code_watcher"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
 			<?php 
@@ -124,7 +149,7 @@ if(!inTime()){
 			<?php endif; ?>
 		</div>
 		<div class="table">
-			<div class="row" style="text-align: center; font-weight: bold;">
+			<div class="row" style="text-align: center;">
 				<div class="cell" style="width: 50px;">
 					#
 				</div>
@@ -165,7 +190,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time). '
@@ -202,7 +227,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '
@@ -239,7 +264,7 @@ if(!inTime()){
 				<div class="row" style="text-align: center;">
 					<div class="cell">
 						' . $result_id . '
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="/addon/code_icon.png"></a>
+						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
 					</div>
 					<div class="cell">
 						' . D('d m y H:M:S', $time) . '

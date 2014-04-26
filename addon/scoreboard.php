@@ -21,7 +21,7 @@ function checkAccept($user_id,$task_id)
 	<title>OTOG CONTEST SCOREBOARD</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="../admin/bootstrap.min.css">
-	<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$("#rank_show").hide();

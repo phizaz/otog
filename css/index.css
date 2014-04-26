@@ -53,11 +53,18 @@ a{
 	/*vertical-align: middle;*/
 }
 #login-wrapper {
-	width: 400px;  
-	/*background: rgb(240,240,240);*/
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 1000;  
+	margin-right: 35%;
+	margin-left: 35%;
+	top: 30%;
 }
 #login-wrapper .inner{
 	height: 300px;
-	display: table-cell;
 	vertical-align: middle;
+	position: absolute;
 }

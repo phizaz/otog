@@ -1,0 +1,78 @@
+/*
+
+Quick Modal
+
+By PanTA version 1.0
+Use only for OTOG Grader
+
+This plugin use with jQuery
+
+- Show modal function
+function showModal(id) //id of modal-container
+{
+	$('#'+id).fadeIn('fast');
+	$("body").css("overflow", "hidden");
+}
+
+- Close modal function
+function closeModal(id) //id of modal-container
+{
+	$('#'+id).fadeOut('fast');
+	$("body").css("overflow", "auto");
+}
+
+- Close modal when click window except modal-container
+$(document).ready(function(){
+	$('html').click(function(e) {   
+		if( !$(e.target).hasClass('modal-content'))
+		{
+			closeModal('id'); //id of modal-container
+		}
+	});
+});
+
+*/
+
+/* container of modal */
+.modal-container{ 
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 1000;
+	display: none;
+	background: rgba(0,0,0,0.6);
+	-khtml-opacity: 0.6;
+	-moz-opacity:.6;
+	/*background-image: url('/addon/img/modal-bg.png');*/
+	cursor: pointer;
+}
+/* main modal */
+.modal {
+	height: 70%;
+	position: absolute;
+	top: 15%;
+	width: 100%;
+}
+/* content of modal */
+.modal-content {
+	border-radius: 10px;
+	background: #272822;
+	margin-left: 20%;
+	margin-right: 20%;
+	height: 100%;
+	text-align: left;
+	cursor: auto;
+}
+/* area of close modal icon */
+.modal-close {
+	text-align: right;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+/* close modal icon */
+.modal-close-icon {
+	height: 20px;
+	width: 20px;
+}
