@@ -268,7 +268,7 @@ function color(input)
 
 <div id="msg"></div>
 <h2>โค้ด</h2>
-<pre id="_code" style="height:500px;overflow:auto;" class='code'>
+<pre id="_code" style="height:500px;overflow:auto;padding-left:10px;padding-top:10px;padding-bottom:10px;" class='code'>
 <?php
 if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 {
