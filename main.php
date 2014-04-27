@@ -359,18 +359,23 @@ $page = '#main';
 				
 				$('#message_text').keydown(function (e){
 					var code = (e.keyCode ? e.keyCode : e.which);
+					var val = $(this).val();
+					if($(this).is(':disabled'))
+						return ;
 					if(code == 13 && !e.shiftKey){
 						//SUBMIT
-						$(this).attr('disabled', 'disabled');
-						$.ajax({
-							url : 'chat_post.php',
-							type : 'post',
-							data : 'text='+$(this).val().replace(/\n/g, '<br>'),
-							success : function (html){
-								$('#message_text').removeAttr('disabled').val('');
-								reloadMessage(true);
-							}
-						});
+						if($.trim(val) != '') {
+							$(this).attr('disabled', 'disabled');
+							$.ajax({
+								url : 'chat_post.php',
+								type : 'post',
+								data : 'text='+$(this).val().replace(/\n/g, '<br>'),
+								success : function (html){
+									$('#message_text').removeAttr('disabled').val('');
+									reloadMessage(true);
+								}
+							});
+						}
 					}
 				});
 			
