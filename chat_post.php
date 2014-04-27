@@ -7,7 +7,7 @@ if(!isLogin() ) {
 	die();
 }
 $text = "";
-for($i = 0; $i < strlen($_POST['text'])-4; $i++)
+for($i = 0; $i < strlen($_POST['text']); $i++)
 {
 	if($_POST['text'][$i]=='<')
 		$text.="&lt";
