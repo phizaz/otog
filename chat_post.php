@@ -14,7 +14,7 @@ for($i = 0; $i < strlen($_POST['text'])-4; $i++)
 		$text.="&lt";
 	else
 		$text.=$_POST['text'][$i];
-	if($_POST['text']!=' ')
+	if($_POST['text'][$i]!=' ')
 		$detect_text = 1;
 }
 if(isset($detect_text))
