@@ -60,12 +60,12 @@ $page = '#main';
 </style>
 <div id="nav" class="container_12" align="center">
 	<div class="grid_2">
-		<h4>สวัสดี <?=$_SESSION[$config['name_short']]['display'] ?>
+		<h4>
 		<?php
 		if($_SESSION[$config['name_short']]['level']==0)
-		{
-			echo "<br><a href='admin' target='_blank'>หน้าผู้ดูแล</a>";
-		}
+			echo "สวัสดี <a href='admin' target='_blank'>".$_SESSION[$config['name_short']]['display']."</a>";
+		else
+			echo "สวัสดี ".$_SESSION[$config['name_short']]['display'];
 		?>
 		</h4>
 	</div>
@@ -99,9 +99,9 @@ $page = '#main';
 		<h4><a href="<?=$page ?>/result">ผลตรวจ</a></h4>
 	</div>
 	<? if(isAdmin() || $config['mode'] != 'online' || ($config['mode'] == 'online' && $config['show_ranking'])): ?>
-	<div class="grid_2">
-		<h4><a href="<?=$page ?>/rank">ผลสอบ</a></h4>
-	</div>
+	<div class="grid_2"><h4><a href="<?=$page ?>/rank">ผลสอบ</a></h4></div>
+	<? else: ?>
+	<div class="grid_2"></div>
 	<? endif; ?>
 	<div class="grid_2">
 		<h4><a href="javascript:logout();">ออกระบบ</a></h4>
