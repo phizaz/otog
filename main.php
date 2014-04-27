@@ -357,7 +357,7 @@ $page = '#main';
 					}
 				}); 
 				
-				$('#message_text').keydown(function (e){
+				$('#message_text').keyup(function (e){
 					var code = (e.keyCode ? e.keyCode : e.which);
 					var val = $(this).val();
 					if($(this).is(':disabled'))
@@ -375,6 +375,9 @@ $page = '#main';
 									reloadMessage(true);
 								}
 							});
+						}
+						else {
+							$(this).val('');
 						}
 					}
 				});
