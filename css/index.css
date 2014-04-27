@@ -50,7 +50,8 @@ a{
 
 #body {
 	/*display: table-cell;*/
-	/*vertical-align: middle;*/
+	/*vertical-align: middle;*/	
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 #login-wrapper {
 	position: fixed;
