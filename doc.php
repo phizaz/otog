@@ -10,9 +10,9 @@ $sql->bind_param('i',$task_id);
 $sql->execute();
 $sql->bind_result($name_short, $visible);
 
-$sql = "select * from `task` where `task_id` = ".$task_id;
-$task = mysql_query($sql);
-$task = mysql_fetch_object($task);
+$sqlx = "select * from `task` where `task_id` = ".$task_id;
+$result = mysql_query($sqlx);
+$task = mysql_fetch_object($result);
 
 if($sql->fetch()) {
 	$path = 'doc/' . $name_short . '.pdf';
@@ -22,10 +22,10 @@ if($sql->fetch()) {
 	    header('Content-Type: application/pdf');
 	    header('Content-Disposition: inline; filename="'. $name_short . '.pdf"');
 	    header('Content-Length: ' . filesize($path));
+	    echo "<title>".$task->name." ".($name_short)."</title>";
 	    ob_clean();
 	    flush();
 	    readfile($path);
-	    echo "<title>".$task->name." ".($name_short)."</title>";
 	    exit;
 	  } else {
 	  	echo 'this file is not visible by now.';
@@ -37,4 +37,3 @@ if($sql->fetch()) {
 } else {
 	echo 'task not recognized';
 }
-?>
