@@ -10,10 +10,6 @@ $sql->bind_param('i',$task_id);
 $sql->execute();
 $sql->bind_result($name_short, $visible);
 
-$sqlx = "select * from `task` where `task_id` = ".$task_id;
-$result = mysql_query($sqlx);
-$task = mysql_fetch_object($result);
-
 if($sql->fetch()) {
 	$path = 'doc/' . $name_short . '.pdf';
 	if(file_exists($path)){
@@ -22,10 +18,13 @@ if($sql->fetch()) {
 	    header('Content-Type: application/pdf');
 	    header('Content-Disposition: inline; filename="'. $name_short . '.pdf"');
 	    header('Content-Length: ' . filesize($path));
-	    echo "<title>".$task->name." ".($name_short)."</title>";
 	    ob_clean();
 	    flush();
 	    readfile($path);
+	    $sqlx = "select * from `task` where `task_id` = ".$task_id;
+		$result = mysql_query($sqlx);
+		$task = mysql_fetch_object($result);
+	    echo "<title>".$task->name." ".($name_short)."</title>";
 	    exit;
 	  } else {
 	  	echo 'this file is not visible by now.';
