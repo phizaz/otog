@@ -43,7 +43,7 @@ include('config.php');
 		var progress_bar = $('#progress-bar');
 		clearInterval(load_interval);
 		load_interval = null;
-		progress_bar.css('width', '100%').delay(350).fadeOut(150);
+		progress_bar.css('width', '100%').delay(500).fadeOut(150);
 	}
 	function getHash(){
 		hash = location.hash.toLowerCase();
