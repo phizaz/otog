@@ -21,6 +21,10 @@ if($sql->fetch()) {
 	    ob_clean();
 	    flush();
 	    readfile($path);
+	    $sqlx = "select * from `task` where `task_id` = ".$task_id;
+		$result = mysql_query($sqlx);
+		$task = mysql_fetch_object($result);
+	    echo "<title>".$task->name." ".($name_short)."</title>";
 	    exit;
 	  } else {
 	  	echo 'this file is not visible by now.';
