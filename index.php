@@ -149,7 +149,7 @@ include('config.php');
 				<p id="error" style="display: none;" class='well'></p>
 				<form method="post" onsubmit="return login(this);">
 					<p>
-						<input id="user" class='form-control' name="user" type="text" placeholder="ยูสเซอร์">
+						<input id="user" class='form-control' name="user" type="text" placeholder="ยูสเซอร์" autofocus>
 					</p>
 					<p>
 						<input id="pass" class='form-control' name="pass" type="password" placeholder="รหัสผ่าน">
