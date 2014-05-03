@@ -27,7 +27,7 @@ function color(input)
 	var len = code.length;
 	var aft_sharp = ["include","define"];
 	var var_type = ["struct","void","int","long","short","unsigned","float","double","bool","char","class"];
-	var stt = ["if","else","for","while","do","const","case","switch","return","public","private","operator","and","or","not","xor","using"];
+	var stt = ["if","else","for","while","do","const","case","switch","return","public","private","operator","and","or","not","xor","using","break","continue"];
 	var bln = ["true","false"];
 	var sp_word = [aft_sharp];
 	sp_word.push(var_type);
