@@ -159,7 +159,7 @@ function compare($task, $case, $style){
 		if(!file_exists($judge) ){
 			//COMPILE
 			if(!file_exists($path.'check.cpp') ) error('Check file (cpp) not found! task : '. $task['name_short'] . ' case : '. $case);
-			$command = 'g++ -O2 '.$path.'check.cpp -o '.$judge.' -lm';
+			$command = 'g++ -O3 '.$path.'check.cpp -o '.$judge.' -lm';
 			exec($command);
 		}
 		$command = $judge . ' ' . $path . $case . '.sol';
