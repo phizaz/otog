@@ -1,3 +1,8 @@
 .project
 .config.php.swp
 mysql.php
+doc/
+judge/ev/
+judge/compiled/
+judge/graded/
+judge/upload/

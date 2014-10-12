@@ -1,4 +1,4 @@
-<?
+<?php
 include("../config.php");
 $message = "";
 $text = '';
@@ -51,12 +51,12 @@ function write(){
 	//not yet finished
 	$query = 'insert into `result` (
 			`result_id`,
-			`user_id`, 
-			`task_id`, 
-			`time`, 
-			`text`, 
-			`score`, 
-			`timeused`, 
+			`user_id`,
+			`task_id`,
+			`time`,
+			`text`,
+			`score`,
+			`timeused`,
 			`message`
 		) values (NULL, ?, ?, ?, ?, ?, ?, ?);';
 	$sql->prepare($query);
@@ -147,7 +147,7 @@ function compare($task, $case, $style){
 		$handle = fopen('grader_path.txt', 'w');
 		$path = 'ev/'.$task['name_short'].'/'.$case.'.sol';
 		fwrite($handle, $path);
-	
+
 		$check = 'ev/'.$task['name_short'].'/check.rb';
 		if(!file_exists($check)) error('Check file (ruby) not found! task : '. $task['name_short'] . ' case : '. $case);
 		$command = 'ruby '.$check;
@@ -161,7 +161,7 @@ function compare($task, $case, $style){
 			if(!file_exists($path.'check.cpp') ) error('Check file (cpp) not found! task : '. $task['name_short'] . ' case : '. $case);
 			$command = 'g++ -O2 '.$path.'check.cpp -o '.$judge.' -lm';
 			exec($command);
-		}	
+		}
 		$command = $judge . ' ' . $path . $case . '.sol';
 		exec($command);
 	}
@@ -190,10 +190,10 @@ while(true){
 
 		//ADD TO GRADING
 		$query = 'insert into `grading` (
-				`grading_id` , 
-				`user_id`, 
-				`task_id`, 
-				`time`, 
+				`grading_id` ,
+				`user_id`,
+				`task_id`,
+				`time`,
 				`file`
 				) values (NULL, ?, ?, ?, ?);';
 		$sql->prepare($query);
@@ -203,7 +203,7 @@ while(true){
 
 		$user = user($user_id);
 		$task = task($task_id);
-		
+
 		//CREATE THIS RESULT DIRECTORY
 		if($config['mode'] != 'online'){
 			$parent_dir = 'graded/' . D('y-w-d', time(0));
@@ -227,8 +227,8 @@ while(true){
 				}
 				$style = 'ruby';
 				include($script); //$cases IS HERE
-				
-				$passed  = 0;	
+
+				$passed  = 0;
 				for($case = 1; $case <= $cases; $case++){
 					//GRADE case
 					$result = run($name, $task, $case);
@@ -253,7 +253,7 @@ while(true){
 				//WRITE PASSED
 				if($passed == $cases && !pass($task_id, $user_id)){
 					$query = 'insert into `pass` (
-						`pass_id`, 
+						`pass_id`,
 						`user_id`,
 						`task_id`
 						) values (NULL, ?, ?);';
@@ -264,14 +264,14 @@ while(true){
 
 				//WRIET BEST
 				$best = best($task_id, $user_id);
-				if($best['success'] && 
-					($best['score'] < $score || 
+				if($best['success'] &&
+					($best['score'] < $score ||
 						(abs($best['score'] - $score) < 0.00001 &&
 							$best['timeused'] > $timeused) ) ){
-					$query = 'update `best` set 
-						`score` = ?, 
-						`timeused` = ?, 
-						`text` = ? 
+					$query = 'update `best` set
+						`score` = ?,
+						`timeused` = ?,
+						`text` = ?
 						where `best_id` = ?;';
 					$sql->prepare($query);
 					$sql->bind_param('ddsi', $score, $timeused, $text, $best['best_id']);
@@ -303,10 +303,10 @@ while(true){
 		//WRITE LATEST
 		$latest = latest($task_id, $user_id);
 		if($latest['success']){
-			$query = 'update `latest` set 
-				`score` = ?, 
-				`timeused` = ?, 
-				`text` = ? 
+			$query = 'update `latest` set
+				`score` = ?,
+				`timeused` = ?,
+				`text` = ?
 				where `latest_id` = ?;';
 			$sql->prepare($query);
 			$sql->bind_param('ddsi', $score, $timeused, $text, $latest['latest_id']);
@@ -314,11 +314,11 @@ while(true){
 		}
 		else {
 			$query = 'insert into `latest` (
-				`latest_id`, 
-				`user_id`, 
-				`task_id`, 
-				`score`, 
-				`timeused`, 
+				`latest_id`,
+				`user_id`,
+				`task_id`,
+				`score`,
+				`timeused`,
 				`text`
 				) values (NULL, ?, ?, ?, ?, ?);';
 			$sql->prepare($query);
