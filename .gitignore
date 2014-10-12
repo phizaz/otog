@@ -2,7 +2,8 @@
 .config.php.swp
 mysql.php
 doc/
-judge/ev/
+judge/ev/*
+!judge/ev/_Template/
 judge/compiled/
 judge/graded/
 judge/upload/
