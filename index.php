@@ -133,12 +133,12 @@ include('config.php');
 		</div>
 	</div>
 	<div id="body" align="center">
-		<? if(!isLogin()): ?>
-		<link href="admin/bootstrap.min.css" rel="stylesheet">
-		<? if($config['regist_open']): ?>
-		<div id="reg" style="display: none;"></div>
-	<? endif; ?>
 	<div id="login-wrapper">
+		<? if(!isLogin()): ?>
+			<link href="admin/bootstrap.min.css" rel="stylesheet">
+		<? if($config['regist_open']): ?>
+			<div id="reg" style="display: none;"></div>
+		<? endif; ?>
 		<div class="panel panel-warning">
 			<div class="panel-heading">
 				<div class="panel-title">

@@ -77,7 +77,7 @@ function reg(form){
 	return false;
 }
 </script>
-<div id="login-wrapper" align="center">
+<!-- <div id="login-wrapper" align="center"> -->
 	<div class="panel panel-success">
 		<div class="panel-heading">
 			<div class="panel-title">
@@ -96,5 +96,5 @@ function reg(form){
 			</form>
 		</div>
 	</div>
-</div>
+<!-- </div> -->
 <? endif; ?>
