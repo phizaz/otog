@@ -38,7 +38,7 @@ if(!inTime()){
 		unload();
 	}
 	$(document).ready(function(){
-		$('html').click(function(e) {   
+		$('html').click(function(e) {
 			if( !$(e.target).hasClass('code'))
 			{
 				closeModal('code_watcher');
@@ -47,7 +47,7 @@ if(!inTime()){
 	});
 </script>
 <div style="height: 20px;"></div>
-<div id="result" class="container_12">	
+<div id="result" class="container_12">
 	<style>
 	.table {
 		display: table;
@@ -95,7 +95,7 @@ if(!inTime()){
 	<div class="modal-container" id="code_watcher"></div>
 	<div class="grid_12" id="result_list">
 		<div class="fast-uploader">
-			<?php 
+			<?php
 			$my = $_SESSION[$config['name_short']];
 			$latest_task = null;
 
@@ -176,7 +176,7 @@ if(!inTime()){
 			<?
 
 			$addition = ' where `user_id` = ? ';
-			if(isAdmin()) $addition = ''; 
+			if(isAdmin()) $addition = '';
 
 			$query = 'select `user_id`, `task_id`, `time` from `queue` '.$addition.' order by `queue_id` desc;';
 			$sql->prepare($query);
@@ -214,8 +214,8 @@ if(!inTime()){
 				</div>
 				';
 			}
-			
-			$query = 'select `user_id`, `task_id`, `time` from `grading` '.$addition.' order by `grading_id` desc;'; 
+
+			$query = 'select `user_id`, `task_id`, `time` from `grading` '.$addition.' order by `grading_id` desc;';
 			$sql->prepare($query);
 			if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
 			$sql->execute();
@@ -251,7 +251,7 @@ if(!inTime()){
 				</div>
 				';
 			}
-	
+
 			$query = 'select `result_id`, `user_id`, `task_id`, `time`, `text`, `score`, `timeused`, `message` from `result` '.$addition.' order by `result_id` desc limit 100;';
 			$sql->prepare($query);
 			if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
@@ -285,24 +285,24 @@ if(!inTime()){
 					echo '<a href="javascript:compiler_message('.$result_id.');">มีปัญหาในการตรวจ</a>';
 				}
 				else {
-					if(isBlind()) $text = $singlecase[substr($text, 0, 1)];  
+					if(isBlind()) $text = $singlecase[substr($text, 0, 1)];
 					echo $text;
 				}
-				$compiler_message = str_replace('<', '&lt;', $compiler_message);
-				$compiler_message = str_replace('>', '&gt;', $compiler_message);
+				$message = str_replace('<', '&lt;', $message);
+				$message = str_replace('>', '&gt;', $message);
 
 				echo '
 						<div class="compiler_message" id="compiler_message-'. $result_id. '">'.$message.'</div>
 					</div>
 					<div class="cell">';
 				if(isBlind()) echo '-';
-				else printf("%.2lf", $score); 
+				else printf("%.2lf", $score);
 				echo '
 					</div>
 					<div class="cell">
 				';
 				if(isBlind()) echo '-';
-				else printf("%.2lf",$timeused);		
+				else printf("%.2lf",$timeused);
 				echo '
 					</div>
 				</div>
