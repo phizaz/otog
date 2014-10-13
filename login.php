@@ -1,7 +1,7 @@
 <?
 session_start();
 include('config.php');
-
+include_once("analyticstracking.php");
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 

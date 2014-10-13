@@ -7,3 +7,10 @@ judge/ev/*
 judge/compiled/
 judge/graded/
 judge/upload/
+judge/grader_path.txt
+judge/grader_result.txt
+judge/grader_tmp.txt
+judge/message.txt
+judge/output.txt
+judge/box
+judge/box.txt
