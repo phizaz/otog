@@ -63,7 +63,7 @@ include('config.php');
 		updateHash();
 		load();
 		$.ajax({
-			url : "main.php", 
+			url : "main.php",
 			success : function (html){
 				unload();
 				$('#body').html(html);
@@ -73,7 +73,7 @@ include('config.php');
 	function login(form){
 		load();
 		$.ajax({
-			url : "login.php", 
+			url : "login.php",
 			type : "post",
 			dataType : "json",
 			data : $(form).serialize(),
@@ -93,7 +93,7 @@ include('config.php');
 	function islogin(){
 		load();
 		$.ajax({
-			url : 'islogin.php', 
+			url : 'islogin.php',
 			dataType : 'json',
 			success : function (html){
 				unload();
@@ -129,7 +129,7 @@ include('config.php');
 <body>
 	<div id="progress-bar-wrapper">
 		<div id="progress-bar">
-			
+
 		</div>
 	</div>
 	<div id="body" align="center">
