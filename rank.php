@@ -1,6 +1,5 @@
 <?
 session_start();
-include_once("analyticstracking.php");
 include('config.php');
 if (!isLogin()){
 	include('notlogin.php');
