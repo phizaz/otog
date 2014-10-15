@@ -26,6 +26,10 @@ if (isset($_SESSION['user_id'])) {
             continue;
           }
 
+          //remove pass
+          $query = "delete from `pass` where `task_id` = {$task_id}";
+          $result = mysql_query($query) or die(mysql_error());
+
           //remove bests
           $query = "delete from `best` where `task_id` = {$task_id}";
           $result = mysql_query($query) or die(mysql_error());
