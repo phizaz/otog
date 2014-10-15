@@ -36,7 +36,7 @@ if($_POST["type"]=="main")
 	$sql = "UPDATE `config` SET `val` = '".$_POST["val"]."' WHERE `index` = '".$_POST["index"]."'";
 	mysql_query($sql) or die("<div style='background-color:#FFBFD3'><br><div style='height:1px'></div><h4>UNSUCCESS</h4><div style='height:1px'></div><br></div>");
 }
-else if($_POST["type"]=='main_time')
+else if($_POST["type"]=="main_time")
 {
 	$date = strtotime($_POST["val"]);
 	$sql = "UPDATE `config` SET `val` = '".$date."' WHERE `index` = '".$_POST["index"]."'";
