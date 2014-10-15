@@ -26,6 +26,10 @@ if (isset($_SESSION['user_id'])) {
             continue;
           }
 
+          //remove bests
+          $query = "delete from `best` where `task_id` = {$task_id}";
+          $result = mysql_query($query) or die(mysql_error());
+
           //enqueue
           $date = new DateTime();
           $now = $date->getTimestamp();
