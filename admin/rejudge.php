@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id'])) {
 
           // get the user_id via username
           $user_id = null;
-          $query = 'select `user_id` from `user` where `user` = ' . $user . ' limit 1';
+          $query = "select `user_id` from `user` where `user` = {$user} limit 1";
           $result = mysql_query($query) or die(mysql_error());
           $user_info = mysql_fetch_array($result);
           $user_id = $user_info['user_id'];
