@@ -11,10 +11,10 @@ function rem(id)
 {
 	if(confirm('Sure?'))
 	{
-		$.post("active.php?action=rem_task", {task_id: id}, 
+		$.post("active.php?action=rem_task", {task_id: id},
 			function(result){
 				$("#msg").html(result);
-				$('#main').load('task_config.php');	
+				$('#main').load('task_config.php');
 			}
 		);
 	}
@@ -30,18 +30,18 @@ function cancel(id)
 	$('#edit_'+id).hide();
 }
 $('.task').hover(
-	function() {$(this).css('background-color', '#F9F9F9')}, 
+	function() {$(this).css('background-color', '#F9F9F9')},
 	function() {$(this).css('background-color', '#FFFFFF')
 });
 function active(id,action)
 {
-	$.post("active.php?action="+action, { 
+	$.post("active.php?action="+action, {
 		name: $("#"+id+"_name").val(),
 		name_short: $("#"+id+"_name_short").val(),
 		score: $("#"+id+"_score").val(),
 		see: $("#"+id+"_see").val(),
-		mem_limit: $("#"+id+"_mem_limit").val(), 
-		time_limit: $("#"+id+"_time_limit").val()}, 
+		mem_limit: $("#"+id+"_mem_limit").val(),
+		time_limit: $("#"+id+"_time_limit").val()},
 		function(result){
 			$("#msg").html(result);
 			$("#msg").slideDown().delay(1500).slideUp();
@@ -113,7 +113,7 @@ function pressEnter(e,id,action) {
 				while($input = mysql_fetch_array($result))
 				{
 					?>
-					<tr id='task_<?=$input["task_id"]?>' class='task' ondblclick='edit(<?=$input["task_id"]?>)'> 
+					<tr id='task_<?=$input["task_id"]?>' class='task' ondblclick='edit(<?=$input["task_id"]?>)'>
 							<td><?=$input["task_id"]?></td>
 							<td>
 								<a href='../doc/<?=$input["name_short"]?>.pdf' target='_blank' class='btn-link' id="<?=$input["task_id"]?>__name"><?=$input["name"]?></a>
@@ -123,10 +123,15 @@ function pressEnter(e,id,action) {
 							<td id="<?=$input["task_id"]?>__time_limit"><?=$input["time_limit"]?></td>
 							<td id="<?=$input["task_id"]?>__mem_limit"><?=$input["mem_limit"]?></td>
 							<td id="<?=$input["task_id"]?>__see"><?=$input["see"]?></td>
-						<td>
+						<td style="min-width: 185px;">
 							<div class='btn-group'>
-								<span onclick='edit(<?=$input["task_id"]?>)' class='btn btn-warning glyphicon glyphicon-wrench'></span>
-								<span onclick='rem(<?=$input["task_id"]?>)' class='btn btn-danger glyphicon glyphicon-trash'></span>
+								<a href='javascript:edit(<?=$input["task_id"]?>)' class='btn btn-warning'>
+									<i class="glyphicon glyphicon-wrench"></i>
+								</a>
+								<a href="rejudge.php?task_id=<?=$input['task_id']?>" target="_blank" class="btn btn-warning" style="font-size: 9px">rejudge</a>
+								<a href='javascript:rem(<?=$input["task_id"]?>)' class='btn btn-danger'>
+									<i class="glyphicon glyphicon-trash"></i>
+								</a>
 							</div>
 						</td>
 					</tr>
