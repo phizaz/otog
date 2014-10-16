@@ -9,6 +9,7 @@ if(!inTime()){
 	include('timeout.php');
 	die();
 }
+if(!isAdmin()) die('You are not admin.');
 ?>
 <link rel="stylesheet" type="text/css" href="addon/css/modal.css">
 <script type="text/javascript">
