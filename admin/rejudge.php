@@ -20,7 +20,6 @@ if (isset($_SESSION['user_id'])) {
 
           // select only the latest file (either .c, .cpp)
           $mod_time = filemtime($dir . '/' . $entry);
-          echo $mod_time . "<br>";
           if (!isset($list[$user])
             || (isset($list[$user]) && $list[$user]['mod_time'] < $mod_time))
             $list[$user] = array('file' => $entry, 'mod_time' => $mod_time);
