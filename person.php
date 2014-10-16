@@ -9,9 +9,6 @@ if(!inTime()){
 	include('timeout.php');
 	die();
 }
-
-$user_id = $_GET['userid'];
-
 ?>
 <link rel="stylesheet" type="text/css" href="addon/css/modal.css">
 <script type="text/javascript">
@@ -177,9 +174,9 @@ $user_id = $_GET['userid'];
 			</div>
 			<?	
 
-			$query = 'SELECT * FROM `result` WHERE `user_id` = '.$user_id.' ORDER BY `result_id` DESC limit 100';
+			$query = 'SELECT * FROM `result` WHERE `user_id` = '.$_GET['userid'].' ORDER BY `result_id` DESC limit 100';
 			$sql->prepare($query);
-			if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
+			//if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
 			$sql->execute();
 			$sql->bind_result($result_id, $user_id, $task_id, $time, $text, $score, $timeused, $message);
 
