@@ -270,7 +270,7 @@ if(!inTime()){
 						' . D('d m y H:M:S', $time) . '
 					</div>
 					<div class="cell">
-						<a href="<?=$page ?>/person.php?userid='.$user["usaer_id"].'"
+						<a href="'.$page.'/person.php?userid='.$usaer_id.'"
 						' . $user['display'] . ' '. ($my['level'] == 0 ? '('.$user['user'].')' : ''). '
 						</a>
 					</div>
