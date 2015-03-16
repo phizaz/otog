@@ -211,8 +211,9 @@ if(!inTime()){
 				echo '</div>';
 				if(!isBlind()) {
 				echo '
-				<div class="cell">
-					<a href="javascript:who_pass(\''.$task_id.'\')">'.$pass_count.'</a>
+				<div class="cell">';
+				if($pass_count==0)echo 0;
+				else echo '<a href="javascript:who_pass(\''.$task_id.'\')">'.$pass_count.'</a>
 				</div>
 				';
 				}
