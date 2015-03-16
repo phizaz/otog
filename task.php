@@ -68,6 +68,7 @@ if(!inTime()){
 	}
 	</style>
 	<link rel="stylesheet" type="text/css" href="addon/css/modal.css">
+	<div class="modal-container" id="who_pass"></div>
 	<div class="modal-container" id="code_watcher"></div>
 	<div class="grid_12">
 		<div class="table">
@@ -211,7 +212,7 @@ if(!inTime()){
 				if(!isBlind()) {
 				echo '
 				<div class="cell">
-					' . $pass_count . '
+					<a href="javascript:who_pass(\''.$task_id.'\')">'.$pass_count.'</a>
 				</div>
 				';
 				}
@@ -292,6 +293,15 @@ if(!inTime()){
 				});
 			}
 //--------------------------------------------------//
+			function who_pass(task){
+				showModal('who_pass');
+				load();
+				$('#who_pass').text('');
+				$('#who_pass').load("addon/who_pass.php?task_id="+task,function(){
+					unload();
+				});
+			}
+
 			function code_watch(task,user){
 				showModal('code_watcher');
 				load();
@@ -319,6 +329,10 @@ if(!inTime()){
 					if( !$(e.target).hasClass('code'))
 					{
 						closeModal('code_watcher');
+					}
+					if( !$(e.target).hasClass('who_pass_pre'))
+					{
+						closeModal('who_pass');
 					}
 				});
 			});
