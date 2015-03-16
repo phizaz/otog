@@ -12,7 +12,7 @@ if ($_SESSION[$config['name_short']]['level']==1)
 	if($_SESSION[$config['name_short']]['user']!=$_GET["user"])
 	{
 		die();
-		close();
+		exit();
 	}
 }
 ?>

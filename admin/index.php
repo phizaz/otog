@@ -1,7 +1,10 @@
 <?php
 session_start();
 if(!isset($_SESSION['user_id']))
+{
 	echo "<meta http-equiv='refresh' content='0; login.php'/>";
+	exit();
+}
 $page = "main";
 if(isset($_REQUEST['page']))
 {
