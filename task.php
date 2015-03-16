@@ -213,9 +213,8 @@ if(!inTime()){
 				echo '
 				<div class="cell">';
 				if($pass_count==0)echo 0;
-				else echo '<a href="javascript:who_pass(\''.$task_id.'\')">'.$pass_count.'</a>
-				</div>
-				';
+				else echo '<a href="javascript:who_pass(\''.$task_id.'\')">'.$pass_count.'</a>';
+				echo '</div>';
 				}
 				if(isAdmin()){
 					echo '<div class="cell"><a id="see_'.$task_id.'" href="javascript:toggleSee('.$task_id.');" class="'.($see == 0 ? 'red' : 'green').'" see="'.$see.'" title="คลิ๊กเพื่อสลับการมองเห็น">'.($see == 0 ? 'ไม่เห็น' : 'เห็น').'</a></div>';
