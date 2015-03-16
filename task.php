@@ -10,7 +10,6 @@ if(!inTime()){
 	die();
 }
 ?>
-
 <div style="height: 20px;"></div>
 <div id="task" class="container_12">	
 	<style>
@@ -68,6 +67,8 @@ if(!inTime()){
 		padding: 4px;
 	}
 	</style>
+	<link rel="stylesheet" type="text/css" href="addon/css/modal.css">
+	<div class="modal-container" id="code_watcher"></div>
 	<div class="grid_12">
 		<div class="table">
 			<div class="row" style="text-align: center; font-weight: bold;">
@@ -203,9 +204,10 @@ if(!inTime()){
 				<div class="cell">
 					' . $latest['text'] . ($latest['success'] && !isBlind() ? ' (' . $latest['score'] . '%)' : '') . '
 				</div>
-				<div class="cell">
-					' . $submit_count . '
-				</div>';
+				<div class="cell">';
+				if($submit_count==0)echo 0;
+				else echo '<a href="javascript:code_watch(\''.$task_id.'\',\''.$user["user"].'\')">'. $submit_count .'</a>';
+				echo '</div>';
 				if(!isBlind()) {
 				echo '
 				<div class="cell">
@@ -289,6 +291,38 @@ if(!inTime()){
 					}  
 				});
 			}
+//--------------------------------------------------//
+			function code_watch(task,user){
+				showModal('code_watcher');
+				load();
+				$('#code_watcher').text('');
+				$('#code_watcher').load("addon/code_watcher.php?task="+task+"&user="+user,function(){
+					unload();
+				});
+			}
+			function showModal(id)
+			{
+				$('#'+id).fadeIn();
+				$('.modal-bg').fadeIn();
+				$("body").css("overflow", "hidden");
+			}
+			function closeModal(id)
+			{
+				$('#'+id).fadeOut();
+				$('.modal-bg').fadeOut();
+				$("body").css("overflow", "auto");
+				unload();
+			}
+		
+			$(document).ready(function(){
+				$('html').click(function(e) {
+					if( !$(e.target).hasClass('code'))
+					{
+						closeModal('code_watcher');
+					}
+				});
+			});
+//--------------------------------------------------//
 		</script>
 	</div>
 </div>
