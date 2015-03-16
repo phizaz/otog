@@ -206,7 +206,7 @@ if(!inTime()){
 				</div>
 				<div class="cell">';
 				if($submit_count==0)echo 0;
-				else echo '<a href="javascript:code_watch(\''.$task_id.'\',\''.$user["user"].'\')">'. $submit_count .'</a>';
+				else echo '<a href="javascript:code_watch(\''.$task_id.'\',\''.$_SESSION[$config['name_short']]['user'].'\')">'. $submit_count .'</a>';
 				echo '</div>';
 				if(!isBlind()) {
 				echo '
