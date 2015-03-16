@@ -6,6 +6,8 @@ include ('library.php');
 if (!isLogin()) {
 	include ('../notlogin.php');
 	die();
+
+// test
 }
 ?>
 <script type="text/javascript" src="addon/js/jquery-1.10.2.min.js"></script>
