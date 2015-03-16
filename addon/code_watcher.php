@@ -6,8 +6,14 @@ include ('library.php');
 if (!isLogin()) {
 	include ('../notlogin.php');
 	die();
-
-// test
+}
+if ($_SESSION[$config['name_short']]['level']==1)
+{
+	if($_SESSION[$config['name_short']]['user']!=$_GET["user"])
+	{
+		die();
+		close();
+	}
 }
 ?>
 <script type="text/javascript" src="addon/js/jquery-1.10.2.min.js"></script>
