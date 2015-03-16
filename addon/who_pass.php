@@ -13,7 +13,7 @@ if (!isLogin()) {
 		<div class='modal-close'>
 			<a href="javascript:closeModal('who_pass')"><img class='modal-close-icon' src="addon/img/close-icon.png"></a>
 		</div>
-		<p><b class="who_pass_pre" style="padding-left:10px;padding-right:10px">รายชื่อผู้ที่ทำผ่าน</b></p>
+		<p class="who_pass_pre" ><b class="who_pass_pre" style="padding-left:10px;padding-right:10px">รายชื่อผู้ที่ทำผ่าน</b></p>
 		<div class="who_pass_pre" style="background:#FFFFFF;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;height:85%;overflow:auto;padding-left:10px;padding-right:10px">
 			<?php
 			$task = Database::getById("task",$_GET["task_id"]);
