@@ -24,6 +24,7 @@ if($_POST["type"]=="main")
 		}
 		else if($_POST["val"]=="online")
 		{
+			mysql_query("TRUNCATE TABLE `ask`");
 			$re_backup = Database::getAll("backup");
 			while($task = mysql_fetch_array($re_backup))
 			{

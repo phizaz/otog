@@ -72,10 +72,18 @@ $page = '#main';
 	<div class="grid_2">
 		<h4>
 		<?php
-		if($_SESSION[$config['name_short']]['level']==0)
+		if(isAdmin())
+		{
 			echo "สวัสดี <a href='admin' target='_blank'>".$_SESSION[$config['name_short']]['display']."</a>";
+			if($config["mode"]!="online")
+				echo "<br><a target='_blank' href='addon/admin_ask.php'>ถามตอบ</a>";	
+		}
 		else
+		{
 			echo "สวัสดี ".$_SESSION[$config['name_short']]['display'];
+			if($config["mode"]!="online")
+				echo "<br><a target='_blank' href='addon/user_ask.php'>ถามตอบ</a>";	
+		}
 		?>
 		</h4>
 	</div>
