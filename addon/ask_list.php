@@ -15,7 +15,7 @@ while($ask = mysql_fetch_array($result))
 {
 	$short = "";
 	$lm = strlen($ask["detail"]);
-	if($lm > 100)$lm = 100;
+	if($lm > 60)$lm = 60;
 	for($i = 0; $i < $lm; $i++)$short.=$ask["detail"][$i];
 	$user = Database::getById("user",$ask["user_id"]);
 	?>
