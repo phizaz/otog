@@ -3,6 +3,10 @@ session_start();
 include ('../config.php');
 include ('config.php');
 include ('library.php');
+if (!isLogin()) {
+	include ('../../notlogin.php');
+	die();
+}
 
 $chk = Database::getById("ask",$_GET["ask_id"]);
 if($chk["user_id"]!=$_SESSION[$config['name_short']]['user_id'])

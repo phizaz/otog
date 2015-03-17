@@ -3,6 +3,11 @@ session_start();
 include ('../config.php');
 include ('config.php');
 include ('library.php');
+if (!isLogin()) {
+	include ('../../notlogin.php');
+	die();
+}
+
 ?>
 
 <head>
@@ -14,6 +19,9 @@ include ('library.php');
 	function load_ans(ask_id)
 	{
 		$("#ask_"+ask_id).load("ask_ans.php?ask_id="+ask_id);
+		setInterval(function(){
+			$("#ask_"+ask_id).load("ask_ans.php?ask_id="+ask_id);
+		},1000);
 	}
 	$(document).ready(function(){
 	});

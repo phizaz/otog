@@ -3,6 +3,10 @@ session_start();
 include ('../config.php');
 include ('config.php');
 include ('library.php');
+if (!isLogin()) {
+	include ('../../notlogin.php');
+	die();
+}
 
 if(!isAdmin())
 {
