@@ -4,7 +4,7 @@ include ('../config.php');
 include ('config.php');
 include ('library.php');
 if (!isLogin()) {
-	include ('../notlogin.php');
+	include ('../../notlogin.php');
 	die();
 }
 function checkAccept($user_id,$task_id)
