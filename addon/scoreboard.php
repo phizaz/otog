@@ -7,6 +7,14 @@ if (!isLogin()) {
 	include ('../../notlogin.php');
 	die();
 }
+
+//FOR OFFICIAL CONTEST
+if(!isAdmin())
+{
+	exit();
+}
+//FOR OFFICIAL CONTEST
+
 function checkAccept($user_id,$task_id)
 {
 	$chkApt = Database::getThat("latest","`user_id`=".$user_id." and `task_id`=".$task_id);
