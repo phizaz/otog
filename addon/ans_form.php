@@ -33,8 +33,8 @@ $ask_user = Database::getById("user",$ask_info["user_id"]);
 	<div class="panel-heading">
 		<b>คำตอบก่อนหน้า</b>
 	</div>
-	<div class="panel-body">
-		<?php
+	<div class="panel-body" id="ans_list">
+	<?php
 		$res = Database::getAllThat("ask","`sub_ask` = ".$_GET['ask_id']);
 		$count_hr = 0;
 		while($sub = mysql_fetch_array($res))
@@ -43,7 +43,7 @@ $ask_user = Database::getById("user",$ask_info["user_id"]);
 				echo "<hr>";
 			echo $sub['detail'];
 		}
-		if($count_hr==0)echo "ยังไม่มีการตอบกลับ";
-		?>
+		if($count_hr==0)echo "<span class='label label-default'>ยังไม่มีการตอบกลับ</span>";
+	?>
 	</div>
 </div>

@@ -42,7 +42,7 @@ if (!isLogin()) {
 					<div class="panel-heading"><b>ถาม</b></div>
 					<div class="panel-body">
 						<form method="post" action="ask_active.php?op=ask">
-							<textarea class='form-control' style='height:75' name="detail"></textarea>
+							<textarea autofocus class='form-control' style='height:75' name="detail"></textarea>
 							<input class='btn btn-primary btn-sm pull-right' type='submit' value='ส่งคำถาม'>
 						</form>
 					</div>
@@ -57,8 +57,10 @@ if (!isLogin()) {
 						<div class="panel-body">
 							<?=$ask["detail"]?>
 						</div>
-						<div class="panel-footer" id="ask_<?=$ask['ask_id']?>" onclick="load_ans('<?=$ask['ask_id']?>')">
-							<submit class="btn btn-primary btn-sm"><b>ดูคำตอบ</b></submit>
+						<div class="panel-footer" id="ask_<?=$ask['ask_id']?>">
+							<acronym title="คลิกเพื่อดูคำตอบ หรือในกรณีที่ยังไม่มีการตอบจะเป็นการรอคำตอบ เมื่อมีการตอบกลับระบบจะแสดงอัตโนมัติ">
+								<submit onclick="load_ans('<?=$ask['ask_id']?>')" class="btn btn-primary btn-sm"><b>ดูคำตอบ</b></submit>
+							</acronym>
 						</div>
 					</div>
 					<?php

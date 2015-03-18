@@ -17,7 +17,6 @@ if($chk["user_id"]!=$_SESSION[$config['name_short']]['user_id'])
 ?>
 <div class="panel panel-default">
 	<div class="panel-body">
-		<submit class="btn btn-primary btn-sm pull-right">refresh</submit>
 		<?php
 		$res = Database::getAllThat("ask","`sub_ask` = ".$_GET['ask_id']);
 		$count_hr = 0;
@@ -27,7 +26,7 @@ if($chk["user_id"]!=$_SESSION[$config['name_short']]['user_id'])
 				echo "<hr>";
 			echo $sub['detail'];
 		}
-		if($count_hr==0)echo "ยังไม่มีการตอบกลับ";
+		if($count_hr==0)echo "<span class='label label-default'>กำลังรอการตอบกลับ ระบบจะแสดงคำตอบทันทีที่มีการตอบกลับ ...</span>";
 		?>
 	</div>
 </div>
