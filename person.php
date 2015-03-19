@@ -9,6 +9,7 @@ if(!inTime()){
 	include('timeout.php');
 	die();
 }
+if(!isAdmin()) die('You are not admin.');
 ?>
 <link rel="stylesheet" type="text/css" href="addon/css/modal.css">
 <script type="text/javascript">
@@ -172,88 +173,11 @@ if(!inTime()){
 					เวลารวม
 				</div>
 			</div>
-			<?
+			<?	
 
-			$addition = ' where `user_id` = ? ';
-			if(isAdmin()) $addition = '';
-
-			$query = 'select `user_id`, `task_id`, `time` from `queue` '.$addition.' order by `queue_id` desc;';
+			$query = 'SELECT * FROM `result` WHERE `user_id` = '.$_GET['userid'].' ORDER BY `result_id` DESC limit 100';
 			$sql->prepare($query);
-			if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
-			$sql->execute();
-			@$sql->bind_result($user_id, $task_id, $time);
-
-			while($sql->fetch()){
-				$user = user($user_id);
-				$task = task($task_id);
-				echo '
-				<div class="row" style="text-align: center;">
-					<div class="cell">
-						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
-					</div>
-					<div class="cell">
-						' . D('d m y H:M:S', $time). '
-					</div>
-					<div class="cell">
-						' . $user['display'] . '
-					</div>
-					<div class="cell">
-						' . $task['name'] . '
-					</div>
-					<div class="cell">
-						รอตรวจ..
-					</div>
-					<div class="cell">
-						-
-					</div>
-					<div class="cell">
-						-
-					</div>
-				</div>
-				';
-			}
-
-			$query = 'select `user_id`, `task_id`, `time` from `grading` '.$addition.' order by `grading_id` desc;';
-			$sql->prepare($query);
-			if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
-			$sql->execute();
-			$sql->bind_result($user_id, $task_id, $time);
-
-			while($sql->fetch()){
-				$user = user($user_id);
-				$task = task($task_id);
-				echo '
-				<div class="row" style="text-align: center;">
-					<div class="cell">
-						-
-						<a href="javascript:code_watch(\''.$task["task_id"].'\',\''.$user["user"].'\')"><img style="height:30px" src="addon/img/code_icon.png"></a>
-					</div>
-					<div class="cell">
-						' . D('d m y H:M:S', $time) . '
-					</div>
-					<div class="cell">
-						' . $user['display'] . '
-					</div>
-					<div class="cell">
-						' . $task['name'] . '
-					</div>
-					<div class="cell">
-						กำลังตรวจ..
-					</div>
-					<div class="cell">
-						-
-					</div>
-					<div class="cell">
-						-
-					</div>
-				</div>
-				';
-			}
-
-			$query = 'select `result_id`, `user_id`, `task_id`, `time`, `text`, `score`, `timeused`, `message` from `result` '.$addition.' order by `result_id` desc limit 100;';
-			$sql->prepare($query);
-			if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
+			//if(!isAdmin()) $sql->bind_param('d', $_SESSION[$config['name_short']]['user_id']);
 			$sql->execute();
 			$sql->bind_result($result_id, $user_id, $task_id, $time, $text, $score, $timeused, $message);
 
@@ -270,9 +194,7 @@ if(!inTime()){
 						' . D('d m y H:M:S', $time) . '
 					</div>
 					<div class="cell">
-						<a href="'.$page.'/person.php?userid='.$user['user_id'].'">
 						' . $user['display'] . ' '. ($my['level'] == 0 ? '('.$user['user'].')' : ''). '
-						</a>
 					</div>
 					<div class="cell">
 						<a href="doc.php?id='. $task['task_id'] . '" target="_blank">' . $task['name'] . '</a>

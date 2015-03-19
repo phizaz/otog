@@ -7,6 +7,14 @@ if (!isLogin()) {
 	include ('../notlogin.php');
 	die();
 }
+if ($_SESSION[$config['name_short']]['level']==1)
+{
+	if($_SESSION[$config['name_short']]['user']!=$_GET["user"])
+	{
+		die();
+		exit();
+	}
+}
 ?>
 <script type="text/javascript" src="addon/js/jquery-1.10.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="addon/css/code_color.css">
@@ -303,7 +311,7 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 			if($line[$i]=='<')
 				echo "&lt";
 			else if($line[$i]=='	')
-				echo "&nbsp;&nbsp;&nbsp; ";
+				echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 			else
 				echo $line[$i];
 		}

@@ -5,6 +5,14 @@ if (!isLogin()){
 	include('notlogin.php');
 	die();
 }
+
+//FOR OFFICIAL CONTEST
+if(!isAdmin())
+{
+	exit();
+}
+//FOR OFFICIAL CONTEST
+
 if(!isAdmin() && $config['mode'] == 'online' && $config['show_ranking'] == false ){
 	die('Online mode has no ranking.');
 }
