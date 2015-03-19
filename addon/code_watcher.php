@@ -311,7 +311,7 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 			if($line[$i]=='<')
 				echo "&lt";
 			else if($line[$i]=='	')
-				echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ";
+				echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 			else
 				echo $line[$i];
 		}
