@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Source Code Pro";
+    src: url(http://otog.org/addon/font/SourceCodePro-Regular.ttf) format("truetype");
+}
+
 body {
 	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
 	font-size: 14px;
