@@ -312,7 +312,7 @@ if($_SESSION[$config['name_short']]['user']==$_GET["user"] or isAdmin())
 				echo "&lt";
 			else if($line[$i]=='	')
 				// &nbsp;&nbsp;&nbsp;
-				echo "<span style='width:35px'> </span>";
+				echo "<span style='padding: 0 80px'> </span>";
 			else
 				echo $line[$i];
 		}
