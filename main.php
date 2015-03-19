@@ -61,6 +61,10 @@ $page = '#main';
 </script>
 <? endif;?>
 <style>
+	@font-face {
+		font-family: "Source Code Pro";
+		src: url(http://otog.konpat.me/addon/font/SourceCodePro-Regular.ttf) format("truetype");
+	}
 	.announce {
 		font-size: 20px;
 	}
