@@ -70,7 +70,19 @@ else if($_REQUEST["action"]=="add_user")
 }
 else if($_REQUEST["action"]=="rem_user")
 {
-	Database::deleteAllThat("user","`user_id` = '".$_POST['user_id']."'");
+	$user_info = Database::getUser($_POST['user_id']);
+	$result = Database::getAllThat("result","`user_id` = '".$_POST['user_id']."'");
+	while($rm_file = mysql_fetch_array($result))
+	{
+		$file_name = $_POST['user_id']."-".$user_info["user"];
+		if(file_exists('../judge/upload/'.$file_name.".c"))unlink('../judge/upload/'.$file_name.".c");
+		if(file_exists('../judge/upload/'.$file_name.".cpp"))unlink('../judge/upload/'.$file_name.".cpp");
+	}
+	$list_db = array("pass", "activity", "best", "chat", "latest", "like", "pass", "result", "user");
+	foreach ($list_db as $key => $value) {
+		Database::deleteAllThat($value,"`user_id` = '".$_POST['user_id']."'");
+	}
+	
 }
 else if($_REQUEST["action"]=="edit_user")
 {
