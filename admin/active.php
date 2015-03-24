@@ -74,7 +74,7 @@ else if($_REQUEST["action"]=="rem_user")
 	$result = Database::getAllThat("result","`user_id` = '".$_POST['user_id']."'");
 	while($rm_file = mysql_fetch_array($result))
 	{
-		$file_name = $_POST['user_id']."-".$user_info["user"];
+		$file_name = $rm_file['task_id']."-".$user_info["user"];
 		if(file_exists('../judge/upload/'.$file_name.".c"))unlink('../judge/upload/'.$file_name.".c");
 		if(file_exists('../judge/upload/'.$file_name.".cpp"))unlink('../judge/upload/'.$file_name.".cpp");
 	}
