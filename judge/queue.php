@@ -67,11 +67,12 @@ function error($code){
 	GLOBAL $message, $text, $score, $timeused;
 	echo $code . '\n';
 	$text = 'err';
-	$message = $code . '<br>เกรดเดอร์จะหยุดทำงานดังนั้นไป start grader ด้วย';
+	$message = $code . '<br>เกรดเดอร์จะหยุดทำงาน และสามารถ start grader ด้วยตัวเองได้แล้ว';
 	$score = 0;
 	$timeused = 0;
 	degrade();
 	write();
+	shell_exec('sh /home/otog/otog/judge/run.sh');
 	die();
 }
 function compile($file){
