@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include "config.php";
 
@@ -14,19 +14,14 @@ if($sql->fetch()) {
 	$path = 'doc/' . $name_short . '.pdf';
 	if(file_exists($path)){
 		if($visible or isAdmin()) {
-			header('Content-Description: File Transfer');
+			header("Pragma: public");
+			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 	    header('Content-Type: application/pdf');
 	    header('Content-Disposition: inline; filename="'. $name_short . '.pdf"');
 	    header('Content-Length: ' . filesize($path));
-	    ob_clean();
-	    flush();
-	    readfile($path);
-
-	    // Vulnerable to SQL Injection!
-	    // Because $task_id is from $_GET['id'] which is given by the user.
-	  	// $sqlx = "select * from `task` where `task_id` = ".$task_id;
-			// $result = mysql_query($sqlx);
-			// $task = mysql_fetch_object($result);
+	    // ob_clean();
+	    // flush();
+	    @readfile($path);
 	    echo "<title>".$name." ".($name_short)."</title>";
 	    exit;
 	  } else {
