@@ -2,7 +2,7 @@
 class Database {
 	public static function getUser($user_id)
 	{
-		$sql = "SELECT * FROM `ws_user_info` WHERE `id` = '".$user_id."'";
+		$sql = "SELECT * FROM `user` WHERE `user_id` = '".$user_id."'";
 		$result_user = mysql_query($sql);
 		$user_info = mysql_fetch_array($result_user);
 		return $user_info;
@@ -139,103 +139,6 @@ class Member {
 				setcookie("admin_fullname",$_COOKIE['admin_fullname'],time()+7200);
 			}
 		}
-	}
-}
-
-class Notice {
-	public static function mailUpdate()
-	{
-		$update = Database::getById("ws_notice",1);
-		if($update["update"] != date('Y-m-d'))
-		{
-			$mail_subject = "มีงานที่ใกล้จะต้องส่ง";
-			$mail_headers = "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$mail_headers .= "From: project@scius.kku.ac.th";
-			$set = array('update' => date('Y-m-d'));
-			Database::updateById("ws_notice",1,$set);
-			$result_work = Database::getAllThat("ws_work","`date_due` = '".date('Y-m-d', strtotime('+1 day'))."'");
-			while($work = mysql_fetch_array($result_work))
-			{
-				$mail_txt = "<html>มีงานที่ใกล้จะต้องส่ง <a href='".SITE."/work_show.php?work_id=".$work["id"]."'>".$work["name"]."</a></html>";
-				$subject = Database::getById("ws_subject", $work["subject_id"]);
-				$class = Database::getById("ws_class", $subject["class_id"]);
-				$result_std = Database::getAllThat("ws_user_info", "`class_id` = ".$class["id"]);
-				while($std = mysql_fetch_array($result_std))
-				{
-					$chk = mail($std["email"],$mail_subject,$mail_txt,$mail_headers);
-				}
-			}
-		}
-	}
-}
-
-class Remover {
-	public static function user($id)
-	{
-		$database = array(
-			"ws_chat",
-			"ws_conclude",
-			"ws_post",
-			"ws_work_status",
-			"ws_work_step"
-		);
-		foreach ($database as $key => $value) {
-			Database::deleteAllThat($value,"`user_id` = ".$id);
-		}
-		$group_result = Database::getAllThat("ws_work_group","`user_id` = ".$id);
-		while($group = mysql_fetch_array($group_result)){
-			Remover::group($group["id"]);
-		}
-		$work_result = Database::getAllThat("ws_work","`user_id` = ".$id);
-		while($work = mysql_fetch_array($work_result)){
-			Remover::work($work["id"]);
-		}
-		Database::deleteById("ws_user_info",$id);
-	}
-
-	public static function work($id)
-	{
-		$database = array(
-			"ws_work_status"
-		);
-		foreach ($database as $key => $value) {
-			Database::deleteAllThat($value,"`work_id` = ".$id);
-		}
-		$group_result = Database::getAllThat("ws_work_group","`work_id` = ".$id);
-		while($group = mysql_fetch_array($group_result)){
-			Remover::group($group["id"]);
-		}
-		Database::deleteById("ws_work",$id);
-	}
-
-	public static function group($id)
-	{
-		Database::deleteAllThat("ws_chat","`group_id` = ".$id);
-		Database::deleteAllThat("ws_work_step","`group_id` = ".$id);
-		Database::deleteById("ws_work_group",$id);
-	}
-
-	public static function subject($id)
-	{
-		Database::deleteAllThat("ws_conclude","`subject_id` = ".$id);
-		$work_result = Database::getAllThat("ws_work","`subject_id` = ".$id);
-		while($work = mysql_fetch_array($work_result)){
-			Remover::work($work["id"]);
-		}
-		Database::deleteById("ws_subject",$id);
-	}
-
-	public static function class_tmp($id)
-	{
-		$subject_result = Database::getAllThat("ws_subject","`class_id` = ".$id);
-		while($subject = mysql_fetch_array($subject_result)){
-			Remover::subject($subject["id"]);
-		}
-		$user_result = Database::getAllThat("ws_user_info","`class_id` = ".$id);
-		while($user = mysql_fetch_array($user_result)){
-			Remover::user($user["id"]);
-		}
-		Database::deleteById("ws_class",$id);
 	}
 }
 ?>

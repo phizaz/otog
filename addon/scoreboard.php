@@ -9,10 +9,10 @@ if (!isLogin()) {
 }
 
 //FOR OFFICIAL CONTEST
-if(!isAdmin())
-{
-	exit();
-}
+// if(!isAdmin())
+// {
+// 	exit();
+// }
 //FOR OFFICIAL CONTEST
 
 function checkAccept($user_id,$task_id)
