@@ -133,13 +133,27 @@ function run($name, $task, $case){
 	$lastLine = $line[$i-1];
 	$lastLine = str_split($lastLine);
 	$start = false;
+
+	$user_time = 0;
+	$sys_time = 0;
 	for($j = 0, $len = count($lastLine); $j < $len; $j++){
 		if($lastLine[$j] == 'r') $start = true;
-		else if($lastLine[$j] == 'u') break;
-		else if($start) $timeused .= $lastLine[$j];
+		else if($lastLine[$j] == 'u') {
+			$user_time = doubleval($timeused);
+			$timeused = '';
+			continue;
+		}
+		else if($lastLine[$j] == 's') {
+			$sys_time = doubleval($timeused);
+			$timeused = '';
+			break;
+		}
+		else if($start) {
+			$timeused .= $lastLine[$j];
+		}
 	}
 
-	return array('result' => $ok, 'timeused' => doubleval($timeused));
+	return array('result' => $ok, 'timeused' => $user_time + $sys_time);
 }
 function compare($task, $case, $style){
 	echo 'Comparing task : '.$task['name_short'].' case : ' . $case. "\n";
