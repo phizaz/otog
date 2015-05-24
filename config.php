@@ -60,6 +60,12 @@ function isBlind(){
 	if(!isAdmin() && $config['mode'] == 'blind_contest') return true;
 	return false;
 }
+function isContest() {
+	global $config;
+	if(!isAdmin()
+		&& ( $config['mode'] == 'contest' || $config['mode'] == 'blind_contest' ) ) return true;
+	return false;
+}
 $user_loaded = array();
 function user($user_id){
 	if(!isset($user_loaded[$user_id]) ) {

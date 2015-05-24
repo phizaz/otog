@@ -290,15 +290,15 @@ if(!inTime()){
 						// bind contest show only the first case
 						$text = $singlecase[substr($text, 0, 1)];
 					}
-					// else if(isContest()) {
-					// 	// do not show anything, but the score
-					// 	$text = '-';
-					// }
+					else if(isContest()) {
+						// do not show anything, but the score
+						$text = '-';
+					}
 					echo $text;
 				}
+
 				$message = str_replace('<', '&lt;', $message);
 				$message = str_replace('>', '&gt;', $message);
-
 				echo '
 						<div class="compiler_message" id="compiler_message-'. $result_id. '">'.$message.'</div>
 					</div>
