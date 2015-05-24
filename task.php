@@ -11,7 +11,7 @@ if(!inTime()){
 }
 ?>
 <div style="height: 20px;"></div>
-<div id="task" class="container_12">	
+<div id="task" class="container_12">
 	<style>
 	.table {
 		display: table;
@@ -113,27 +113,27 @@ if(!inTime()){
 			$b->execute();
 			$b->bind_result($latest_task_id);
 			if(!$b->fetch()) $latest_task_id = -1;
-			
+
 			if(!isBlind()){
 				$query = 'select `task_id` from `pass` where `user_id` = ?;';
 				$b->prepare($query);
 				$b->bind_param('i', $my['user_id']);
 				$b->execute();
 				$b->bind_result($pass_task_id);
-				
+
 				$passed = array();
-				while($b->fetch()){	
-					$passed[$pass_task_id] = true;	
+				while($b->fetch()){
+					$passed[$pass_task_id] = true;
 				}
 			}
-			
+
 			while($sql->fetch() ){
 				// Old-fashion obsoleted.
 				// $link = 'doc/' . $name_short . '.pdf';
 				// New fashion.
 				$link = 'doc.php?id=' . $task_id;
 				$latest = latest($task_id, $my['user_id']);
-				
+
 				$query = 'select `user_id` from `like` where `task_id` = ?;';
 				$b->prepare($query);
 				$b->bind_param('i', $task_id);
@@ -150,21 +150,21 @@ if(!inTime()){
 					$like_names .= '<span class="name" style="'.($first ? '' : 'padding-left: 0px;').'">'.($first ? '' : ',').' '.$user['display'].'</span>';
 					$first = false;
 				}
-				
+
 				$query = 'select * from `result` where `user_id` = ? and `task_id` = ?;';
 				$b->prepare($query);
 				$b->bind_param('ii', $my['user_id'], $task_id);
 				$b->execute();
 				$b->store_result();
 				$submit_count = $b->num_rows;
-				
+
 				$query = 'select `user_id` from `pass` where `task_id` = ? and (`user_id`) in (select `user_id` from `user` where `level` = 1);';
 				$b->prepare($query);
 				$b->bind_param('i', $task_id);
 				$b->execute();
 				$b->store_result();
 				$pass_count = $b->num_rows;
-				
+
 				$class_task = ((date("m-d-y",time()) == date("m-d-y",$see_date)) ? 'new ':'').($submit_count > 0 ? ($passed[$task_id] == true ? 'passed' : 'tried') : 'nosub').($task_id == $latest_task_id ? ' latest':'');
 				if($config["mode"]!="online")
 					$class_task = '';
@@ -194,12 +194,15 @@ if(!inTime()){
 				else:
 					echo $score;
 				endif;
-				
-				if(isBlind() ) {
+
+				if(isBlind()) {
 					$latest['text'] = $singlecase[substr($latest['text'], 0, 1)];
 				}
+				else if (isContest()) {
+					$latest['text'] = 'ไม่บอก';
+				}
 				if(!$latest['success']) $latest['text'] = 'คุณยังไม่ได้ส่ง';
-				
+
 				echo '
 				</div>
 				<div class="cell">
@@ -210,11 +213,14 @@ if(!inTime()){
 				else echo '<a href="javascript:code_watch(\''.$task_id.'\',\''.$_SESSION[$config['name_short']]['user'].'\')">'. $submit_count .'</a>';
 				echo '</div>';
 				if(!isBlind()) {
-				echo '
-				<div class="cell">';
-				if($pass_count==0)echo 0;
-				else echo '<a href="javascript:who_pass(\''.$task_id.'\')">'.$pass_count.'</a>';
-				echo '</div>';
+					echo '<div class="cell">';
+					if($pass_count==0) {
+						echo 0;
+					}
+					else {
+						echo '<a href="javascript:who_pass(\''.$task_id.'\')">'.$pass_count.'</a>';
+					}
+					echo '</div>';
 				}
 				if(isAdmin()){
 					echo '<div class="cell"><a id="see_'.$task_id.'" href="javascript:toggleSee('.$task_id.');" class="'.($see == 0 ? 'red' : 'green').'" see="'.$see.'" title="คลิ๊กเพื่อสลับการมองเห็น">'.($see == 0 ? 'ไม่เห็น' : 'เห็น').'</a></div>';
@@ -238,14 +244,14 @@ if(!inTime()){
 				scoreObj.children('.editor').show();
 				$('#score_editor_' + task_id).val( scoreObj.children('.display').attr('value') );
 			}
-			function like(task_id){ 
+			function like(task_id){
 				var like_obj = $('#like_'+task_id);
 				if(like_obj.attr('liked') == 0){
 					like_obj.attr('liked',1);
 					$.ajax({
 						url : 'addon/like.php',
 						type : 'post',
-						data : 'task_id=' + task_id, 
+						data : 'task_id=' + task_id,
 						success : function (html){
 							var likecount_obj = like_obj.children('.likecount');
 							var like_names_obj = like_obj.children('.names');
@@ -263,7 +269,7 @@ if(!inTime()){
 				$.ajax({
 					url : 'task_change_score.php',
 					type : 'post',
-					data : $(form).serialize(), 
+					data : $(form).serialize(),
 					success : function (html){
 						unload();
 						var scoreObj = $('#score_' + task_id);
@@ -276,8 +282,8 @@ if(!inTime()){
 			function toggleSee(task_id){
 				load();
 				$.ajax({
-					url : 'task_toggle_see.php', 
-					type : 'post', 
+					url : 'task_toggle_see.php',
+					type : 'post',
 					data : 'task_id=' + task_id,
 					success : function (html){
 						unload();
@@ -289,7 +295,7 @@ if(!inTime()){
 							.addClass( (newsee == 1 ? 'green' : 'red') )
 							.html( (newsee == 1 ? 'เห็น' : 'ไม่เห็น') )
 							.attr('see', newsee);
-					}  
+					}
 				});
 			}
 //--------------------------------------------------//
@@ -323,7 +329,7 @@ if(!inTime()){
 				$("body").css("overflow", "auto");
 				unload();
 			}
-		
+
 			$(document).ready(function(){
 				$('html').click(function(e) {
 					if( !$(e.target).hasClass('code'))
