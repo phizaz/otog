@@ -294,9 +294,7 @@ if(!inTime()){
 						// do not show anything, but the score
 						$text = '-';
 					}
-					else {
-						echo $text;
-					}
+					echo $text;
 				}
 				$message = str_replace('<', '&lt;', $message);
 				$message = str_replace('>', '&gt;', $message);

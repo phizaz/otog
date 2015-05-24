@@ -35,7 +35,7 @@ $month = array('มกราคม', 'กุมภาพันธ์', 'มี�
 
 function inTime(){
 	global $config, $_SESSION;
-	if($config['force_start'] || Admin() || $config['mode'] == 'online' ||
+	if($config['force_start'] || isAdmin() || $config['mode'] == 'online' ||
 		($config['time'] >= $config['start_time'] && $config['time'] <= $config['end_time'])){
 		return true;
 	}
