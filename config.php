@@ -35,7 +35,7 @@ $month = array('มกราคม', 'กุมภาพันธ์', 'มี�
 
 function inTime(){
 	global $config, $_SESSION;
-	if($config['force_start'] || isAdmin() || $config['mode'] == 'online' || 
+	if($config['force_start'] || isAdmin() || $config['mode'] == 'online' ||
 		($config['time'] >= $config['start_time'] && $config['time'] <= $config['end_time'])){
 		return true;
 	}
@@ -51,7 +51,7 @@ function isLogin(){
 
 function isAdmin(){
 	global $_SESSION, $config;
-	if(isLogin()) 
+	if(isLogin())
 		if($_SESSION[$config['name_short']]['level'] == 0) return true;
 	return false;
 }
@@ -161,7 +161,7 @@ function showDif($dif){
 //UPDATE THE LATEST ACTIVITY
 if(isLogin()){
 	$my = $_SESSION[$config['name_short']];
-	
+
 	$query = 'select `activity_id` from `activity` where `user_id` = ?;';
 	$sql->prepare($query);
 	$sql->bind_param('i', $my['user_id']);

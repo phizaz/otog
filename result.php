@@ -286,7 +286,14 @@ if(!inTime()){
 					echo '<a href="javascript:compiler_message('.$result_id.');">มีปัญหาในการตรวจ</a>';
 				}
 				else {
-					if(isBlind()) $text = $singlecase[substr($text, 0, 1)];
+					if(isBlind()) {
+						// bind contest show only the first case
+						$text = $singlecase[substr($text, 0, 1)];
+					}
+					else if(isContest()) {
+						// do not show anything, but the score
+						$text = '-';
+					}
 					echo $text;
 				}
 				$message = str_replace('<', '&lt;', $message);
