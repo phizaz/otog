@@ -109,6 +109,8 @@ function run($name, $task, $case){
 		error('Input test case file not found! task : '.$task['name_short'].' case : '.$case);
 	}
 	$command = './' . $config['box_file'] .' -i '.$input.' -o output.txt -m '.($task['mem_limit'] * 1000).' -t '.$task['time_limit'].' -T compiled/'.$name.'.out 2> box.txt';
+	echo "running with : ";
+	echo $command . "\n";
 	exec($command);
 
 	//GET INFO FROM box.txt
