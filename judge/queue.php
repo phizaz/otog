@@ -80,7 +80,7 @@ function compile($file){
 	$name = name($file);
 	$extension = extension($file);
 	echo 'Extension : ' .$extension."\n";
-	$list = array('c' => 'gcc -std=c99 ', 'cpp' => 'g++');
+	$list = array('c' => 'gcc -std=c99 ', 'cpp' => 'g++ -std=c++11');
 
 	wipe('message.txt');
 	rm('compiled/'.$name.'.out');
