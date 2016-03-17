@@ -199,7 +199,8 @@ if(!inTime()){
 					$latest['text'] = $singlecase[substr($latest['text'], 0, 1)];
 				}
 				else if (isContest()) {
-					$latest['text'] = 'ไม่บอก';
+					// $latest['text'] = 'ไม่บอก';
+					// show the actual result
 				}
 				if(!$latest['success']) $latest['text'] = 'คุณยังไม่ได้ส่ง';
 

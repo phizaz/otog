@@ -292,7 +292,8 @@ if(!inTime()){
 					}
 					else if(isContest()) {
 						// do not show anything, but the score
-						$text = 'ไม่บอก';
+						// $text = 'ไม่บอก';
+						// show the actual result
 					}
 					echo $text;
 				}
