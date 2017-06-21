@@ -132,17 +132,15 @@ function pass($task_id, $user_id){
 $task_loaded = array();
 function task($task_id){
 	global $task_loaded;
-	if(!isset($task_loaded[$task_id]) ) {
-		$query = 'select `task_id`, `name`, `name_short`, `score`, `time_limit`, `mem_limit`, `see` from `task` where `task_id` = ?;';
-		$mysqli = newSqli();
-		$sql = $mysqli->stmt_init();
-		$sql->prepare($query);
-		$sql->bind_param('i', $task_id);
-		$sql->execute();
-		$sql->bind_result($task_id, $name, $name_short, $score, $time_limit, $mem_limit, $see);
-		if($sql->fetch()) $task_loaded[$task_id] = array('success' => true, 'task_id' => $task_id, 'name' => $name, 'name_short' => $name_short, 'link' => $link, 'score' => $score, 'time_limit' => $time_limit, 'mem_limit' => $mem_limit, 'see' => $see);
-		else $task_loaded[$task_id] = array('success' => false);
-	}
+	$query = 'select `task_id`, `name`, `name_short`, `score`, `time_limit`, `mem_limit`, `see` from `task` where `task_id` = ?;';
+	$mysqli = newSqli();
+	$sql = $mysqli->stmt_init();
+	$sql->prepare($query);
+	$sql->bind_param('i', $task_id);
+	$sql->execute();
+	$sql->bind_result($task_id, $name, $name_short, $score, $time_limit, $mem_limit, $see);
+	if($sql->fetch()) $task_loaded[$task_id] = array('success' => true, 'task_id' => $task_id, 'name' => $name, 'name_short' => $name_short, 'link' => $link, 'score' => $score, 'time_limit' => $time_limit, 'mem_limit' => $mem_limit, 'see' => $see);
+	else $task_loaded[$task_id] = array('success' => false);
 	return $task_loaded[$task_id];
 }
 function showDif($dif){
